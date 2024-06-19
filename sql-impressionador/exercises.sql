@@ -1,4 +1,3 @@
-<<<<<<< HEAD:sql-impressionador/exercises.sql
 USE ContosoRetailDW
 
 /* 1. Você é responsável por controlar os dados de clientes e de produtos da sua empresa.
@@ -1497,7 +1496,8 @@ SET @varMultiplicacao = @varValor1 * @varValor4
 SELECT 'Multiplicação entre var 1 e valor 4 é = ' + CAST(@varMultiplicacao AS VARCHAR(10)) AS 'Resutldo da Multiplicação'
 
 
--- d) Crie uma nova variável para armazenar o resultado da divisão do valor3 pelo valor4. Chame essa variável de divisao. Obs: O resultado deverá estar em decimal, e não em inteiro.DECLARE @varValor3 INT = 34, @varValor4 INT = 7,
+-- d) Crie uma nova variável para armazenar o resultado da divisão do valor3 pelo valor4. Chame essa variável de divisao. Obs: O resultado deverá estar em decimal, e não em inteiro.
+DECLARE @varValor3 INT = 34, @varValor4 INT = 7,
 @varDivisao INT
 SET @varDivisao = @varValor3 / @varValor4
 SELECT CAST(@varDivisao AS DECIMAL(15, 10)) AS 'Resultado da Divisão'
