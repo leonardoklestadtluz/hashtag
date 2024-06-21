@@ -1,0 +1,46 @@
+2. Estrutura de um documento HTML
+
+Claro! A estrutura básica de um documento HTML é composta por três partes principais:
+
+Definição do documento (doctype): O documento começa com a declaração do tipo de documento, que é indicada pela tag <!DOCTYPE html>. Essa declaração informa ao navegador que o conteúdo a seguir será escrito em HTML5.
+
+Cabeçalho (head): O cabeçalho contém informações sobre o documento, mas não é exibido na página. Ele é delimitado pelas tags <head> e </head>. Dentro do cabeçalho, você pode incluir metadados, como o título da página, links para folhas de estilo (CSS), scripts JavaScript e outras informações relevantes.
+
+Corpo (body): O corpo do documento contém o conteúdo visível da página. Ele é delimitado pelas tags <body> e </body>. Aqui, você pode inserir parágrafos, imagens, tabelas, links e outros elementos que serão exibidos na página.
+
+
+Por exemplo, um documento HTML básico teria a seguinte estrutura:
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minha Página</title>
+    <!-- Outros metadados aqui -->
+</head>
+<body>
+    <h1>Olá, mundo!</h1>
+    <p>Este é um parágrafo de exemplo.</p>
+    <!-- Mais conteúdo aqui -->
+</body>
+</html>
+
+
+
+Neste exemplo:
+
+* A tag <!DOCTYPE html> define o tipo de documento como HTML5.
+* O cabeçalho contém o título da página.
+* O corpo contém um cabeçalho de nível 1 (<h1>), um parágrafo (<p>) e uma imagem (<img>).
+
+Lembre-se de que o HTML é uma linguagem de marcação, não de programação. Ele estrutura o conteúdo da página, permitindo que os navegadores o interpretem corretamente. 
+
+Referências: 
+	* https://developer.mozilla.org/pt-BR/docs/learn/getting_started_with_the_web/html_basics
+	* https://br.ccm.net/contents/236-a-estrutura-basica-de-um-documento-html
+	* https://bing.com/search?q=Estrutura+de+um+documento+html
+	* http://www.nce.ufrj.br/ginape/cursohtml/conteudo/introducao/estrutura.htm
+	* https://developer.mozilla.org/pt-BR/docs/learn/html/introduction_to_html/document_and_website_structure
+
+Fonte: COPILOT
+
