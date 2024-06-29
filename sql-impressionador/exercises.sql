@@ -3075,30 +3075,107 @@ SELECT
 
 -- d) Crie uma nova variável para armazenar o resultado da divisão do valor3 pelo valor4. Chame essa variável de divisao. Obs: O resultado deverá estar em decimal, e não em inteiro.
 DECLARE 
-	@varValor3 INT = 34, 
-	@varValor4 INT = 7, 
-	@varDivisao DECIMAL
+	@varValor3 FLOAT = 34, 
+	@varValor4 FLOAT = 7, 
+	@varDivisao FLOAT
 SET 
 	@varDivisao = @varValor3 / @varValor4
 SELECT 
 	'Resultado divisão entre Valor3 e Valor4 é: ' + 
-	CAST(CAST(@varDivisao AS DECIMAL) AS VARCHAR(10)) AS 'Resultado da Divisão'
+	CAST(
+		ROUND(
+			@varDivisao, 2
+		) AS VARCHAR(10)
+	) AS 'Resultado da Divisão'
 
 
+/*	Para cada declaração das variáveis abaixo, 
+atenção em relação ao tipo de dado que deverá ser especificado. */
+
+-- a) Declare uma variável chamada ‘produto’ e atribua o valor de ‘Celular’. 
+DECLARE 
+	@varProduto VARCHAR(50) = 'Celular'
+SELECT
+	@varProduto AS 'Tipo de Produto'
+
+	
+-- b) Declare uma variável chamada ‘quantidade’ e atribua o valor de 12. 
+DECLARE 
+	@varQuantidade INT = 12
+SELECT
+	@varQuantidade AS 'Quantidade'
 
 
+-- c) Declare uma variável chamada ‘preco’ e atribua o valor 9.99.
+DECLARE 
+	@varPreco FLOAT = 9.99
+SELECT
+	@varPreco AS 'Preço'
 
 
+-- d) Declare uma variável chamada ‘faturamento’ e atribua o resultado da multiplicação entre ‘quantidade’ e ‘preco’. 
+DECLARE 
+	@varFaturamento FLOAT, 
+	@varQuantidade INT = 12, 
+	@varPreco FLOAT = 9.99
+SET 
+	@varFaturamento = @varQuantidade * @varPreco
+SELECT 
+	@varFaturamento AS 'Faturamento'
 
 
+-- e) Visualize o resultado dessas 4 variáveis em uma única consulta, por meio do SELECT.
+
+DECLARE 
+	@varProduto VARCHAR(50) = 'Celular', 
+	@varQuantidade INT = 12, 
+	@varPreco FLOAT = 9.99, 
+	@varFaturamento FLOAT
+SET 
+	@varFaturamento = @varQuantidade * @varPreco
+SELECT 
+	@varProduto AS 'Tipo de Produto', 
+	@varQuantidade AS 'Quantidade', 
+	@varPreco AS 'Preço', 
+	@varFaturamento AS 'Faturamento'
 
 
+/*	3. Você é responsável por gerenciar um banco de dados onde são recebidos dados externos de usuários. 
 
+Em resumo, esses dados são:
 
+- Nome do usuário
+- Data de nascimento 
+- Quantidade de pets que aquele usuário possui
 
+Você precisará criar um código em SQL capaz de juntar as informações fornecidas por este usuário. 
 
+Para simular estes dados, crie 3 variáveis, chamadas: nome, data_nascimento e num_pets. 
 
+Você deverá armazenar os valores ‘André’, ‘10/02/1998’ e 2, respectivamente.
 
+O resultado final a ser alcançado é mostrado no print abaixo: 
+
+(Nenhum nome de coluna)
+Meu nome é André, nasci em 10/02/1988 e tenho 2 pets.
+*/
+
+DECLARE 
+	@varNome VARCHAR(50) = 'André', 
+	@varData_nascimento DATETIME = '10/02/1998', 
+	@varNum_pets INT = 2
+SELECT '
+	Meu nome é ' 
+	+ @varNome 
+	+ ', nasci em ' 
+	+ FORMAT(
+			@varData_nascimento, 'dd/MM/yyyy'
+	  ) 
+	+ ' e tenho ' 
+	+ CAST(
+		@varNum_pets AS VARCHAR(5)
+		) 
+	+ ' pets.'
 
 
 
