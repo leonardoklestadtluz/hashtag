@@ -1,0 +1,21 @@
+h1 {
+  color: rgb(189, 238, 54);
+}
+
+p {
+  font-size: small;
+}
+
+.paragrafo-bloco1 {
+  font-size: 24px;
+}
+
+.paragrafo-bloco2 {
+  font-size: 28px;
+  color: darkturquoise;
+}
+
+p span {
+  font-size: 32px;
+  color: rgb(238, 54, 167);
+}

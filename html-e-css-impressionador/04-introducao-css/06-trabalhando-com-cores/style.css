@@ -1,0 +1,34 @@
+h1, h2, h3 {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  font-size: 64px;
+  line-height: 0.7;
+}
+
+h2 {
+  font-size: 32px;
+  line-height: 0.8;
+}
+
+h3 {
+  font-size: 24PX;
+  line-height: 0.9;
+}
+
+p {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.realce {
+  color: rgba(39, 1, 255, 0.507);
+  font-style: italic;
+  font-weight: 900;
+}
+
+.caixa-alta {
+  text-transform: uppercase;
+}
