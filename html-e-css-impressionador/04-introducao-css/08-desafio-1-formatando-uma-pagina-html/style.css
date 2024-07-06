@@ -35,11 +35,7 @@ a {
   text-decoration-line: underline;
 }
 
-span {
-  color: #0588c4;
-}
-
-.realce {
+span, .realce {
   color: #0588c4;
 }
 
