@@ -3188,18 +3188,49 @@ O seu resultado deverá estar estruturado em uma frase, com a seguinte estrutura:
 
 Obs: utilize o comando PRINT (e não o SELECT!) para mostrar o resultado. */
 
+DECLARE @varListaLojas VARCHAR(50)
+SET @varListaLojas = ''
 
-DECLARE @varNomeLoja VARCHAR(50)
+SELECT 
+	@varListaLojas = @varListaLojas + StoreName + ', '
+FROM
+	DimStore
+WHERE
+	YEAR(CloseDate) = 2008
+	-- FORMAT(CloseDate, 'yyyy') = 2008
 
-SELECT @varNomeLoja = StoreName FROM DimStore
-
-SELECT @varNomeLoja
-
-SELECT [CloseReason], * FROM DimStore WHERE Status = 'Off' AND CloseDate LIKE '%2008%'
+PRINT
+	'As lojas fechadas no ano de 2008 foram: ' + @varListaLojas
 
 
+/*	5. Você precisa criar uma consulta para mostrar a lista 
+de produtos da tabela DimProduct para uma subcategoria específica: ‘Lamps’.  
+
+Utilize o conceito de variáveis para chegar neste resultado.*/
 
 
+DECLARE @varIdSubCategoria INT
+DECLARE @varNomeSubCategoria VARCHAR(30)
+
+SET 
+	@varNomeSubCategoria = 'Lamps'
+SET 
+	@varIdSubCategoria = 
+	(
+		SELECT 
+			ProductSubcategoryKey 
+		FROM 
+			DimProductSubcategory 
+		WHERE 
+			ProductSubcategoryName = @varNomeSubCategoria
+	)
+
+SELECT 
+	* 
+FROM 
+	DimProduct 
+WHERE 
+	ProductSubcategoryKey = @varIdSubCategoria
 
 
 
