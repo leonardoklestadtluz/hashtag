@@ -1,0 +1,24 @@
+/* RESET */
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* GLOBAL */
+body { font-family: 'Montserrat', sans-serif; }
+
+a { text-decoration: none; }
+
+/* MENU */
+ul {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+li { list-style-type: none; }
+
+.item-lista-cabecalho a {
+  color: #112E61;
+  line-height: 1px;
+  text-transform: uppercase;
+}
