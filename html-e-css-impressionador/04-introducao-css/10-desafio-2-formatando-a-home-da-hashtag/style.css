@@ -5,11 +5,27 @@
 }
 
 /* GLOBAL */
-body { font-family: 'Montserrat', sans-serif; }
+body { 
+  color: #404040;
+  font-family: 'Montserrat', sans-serif;
+}
 
 a { text-decoration: none; }
 
-/* MENU */
+h1 {
+  font-size: 35px;
+  font-weight: 600;
+}
+
+p {
+  font-size: 16px;
+}
+
+h2 strong {
+  font-weight: 600;
+}
+
+/* MENU DE NAVEGAÇÃO */
 ul {
   font-size: 14px;
   font-weight: 600;
@@ -21,4 +37,86 @@ li { list-style-type: none; }
   color: #112E61;
   line-height: 1px;
   text-transform: uppercase;
+}
+
+/* SEÇÃO HERO */
+.hero-paragrafo {
+  color: #404040;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.hero-botao {
+  color: rgb(47, 119, 182); /* cor provisória */
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* SEÇÃO CONTEÚDOS GRATUÍTOS */
+.gratuito-h2 {
+  color: #404040;
+  font-size: 35px;
+  font-weight: 400;
+}
+
+.gratuito-realce {
+  color: #7A40BE;
+  font-weight: 500;
+}
+
+.gratuito-h3 {
+  color: rgb(47, 119, 182); /* cor provisória */
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.gratuito-link-lista {
+  color: #404040;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+/* SEÇÃO DIFERENCIAIS HASHTAG */
+.barra-vertical {
+  background-color: #FFB20F;
+  height: 150px;
+  width: 14px;
+}
+
+.diferenciais-h2 {
+  color: rgb(47, 119, 182); /* cor provisória */
+  font-size: 35px;
+  font-weight: 400;
+}
+
+/* h2 strong {
+  font-weight: 600;
+} */
+
+.diferenciais-p {
+  color: rgb(47, 119, 182); /* cor provisória */
+  font-size: 19px;
+}
+
+.diferenciais-h3 {
+  color: #005E88;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.texto-diferenciais-hashtag {
+  color: #404040;
+  font-size: 16px;
+}
+
+.diferenciais-h3-empresas {
+  color: #404040;
+  font-size: 35px;
+  font-weight: 400;
+}
+
+.realce-empresas {
+  color: #005E88;
+  font-weight: 600;
 }
