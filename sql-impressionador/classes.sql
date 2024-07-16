@@ -1,5 +1,6 @@
 USE ContosoRetailDW
 
+/*
 -- 4. [SQL Server] Introdução ao SQL
 
 
@@ -1467,9 +1468,90 @@ SELECT @@ROWCOUNT
 
 
 
+-- LEN e DATALENGTH: retorna a quantidade de caracteres de uma palavra 
+-- LEN = retorna somente a quantidade de caracteres
+-- DATALENGTH: retorna a quantidade de caracteres incluindo espaços em branco, caso haja
+
+SELECT 
+	LEN('SQL Hashtag    ') AS 'Len',
+	DATALENGTH('SQL Hashtag    ') AS 'Datalength'
+
+-- CONCAT: permite juntar mais de um texto em uma única palavra
+
+-- faça uma consulta à tabela DimCustomer onde seja possível visualizar o nome completo de cada cliente
 
 
+SELECT 
+	FirstName AS 'Nome', 
+	LastName AS 'Sobrenome', 
+	CONCAT(
+		FirstName, 
+		' ',
+		LastName
+	) AS 'Nome Completo',
+	EmailAddress AS 'E-mail'
+FROM 
+	DimCustomer
 
+
+-- LEFT ---> extrai uma determinada quantidade de caracteres de um texto, da esquerda para a direita
+-- RIGHT ---> extrai uma determinada quantidade de caracteres de um texto, da direita para esquerda
+
+-- Faça uma consulta à tabela DimProduct e divida a coluna StyleName em duas partes
+
+SELECT * FROM DimProduct
+
+SELECT LEFT('Product0101001', 7)
+SELECT RIGHT('Product0101001', 7)
+
+
+SELECT ProductName AS 'Produto', UnitPrice AS 'Preço', LEFT(StyleName, 7) AS 'Cod 1', RIGHT(StyleName, 7) AS 'Cod 2' FROM DimProduct
+
+
+-- REPLACE: Substitui um determinado texto por outro texto
+-- No texto 'O Excel é o melhor', substitua 'Excel' por SQL
+
+SELECT REPLACE('O Excel é o melhor', 'Excel', 'SQL')
+
+-- Crie uma consulta a partir de DimCustomer onde você retorna o Nome Completo do Clientes, a coluna de Sexo (Abrev) e uma outra coluna de Sexo substituindo M por Masculino e Fpor Feminino
+
+SELECT * FROM DimCustomer
+
+SELECT
+	FirstName AS 'Nome',
+	LastName AS 'Sobrenome',
+	Gender AS 'Sexo (Avrev.)',
+	REPLACE(
+		REPLACE(
+			Gender, 
+			'M', 
+			'Masculino'
+		), 
+		'F', 
+		'Feminino' 
+	) AS 'Sexo'
+FROM 
+	DimCustomer
+*/
+
+-- TRANSLATE e STUFF: OUTRAS FUNÇÕES DE SUBSTITUIÇÃO
+
+-- TRANSLATE: Substitui cada caracter na ordem encontrada no texto
+
+SELECT TRANSLATE('10.241/444.124k23/1', './k', '---')
+
+SELECT TRANSLATE('ABCD-490123', 'ABCD', 'WXYZ')
+
+
+-- STUFF: Substitui qualquer texto com uma quantidade de caracteres limitados, por outro texto
+
+SELECT STUFF('VBA Impressionador', 1, 3, 'Excel')
+
+
+SELECT 
+	STUFF('MT98-Moto G', 1, 2, 'Cel'), 
+	STUFF('AP01-IPhone', 1, 2, 'Cel'), 
+	STUFF('SS61-Samsung Galax', 1, 2, 'Cel')
 
 
 
