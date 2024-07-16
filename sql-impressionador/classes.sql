@@ -1532,7 +1532,6 @@ SELECT
 	) AS 'Sexo'
 FROM 
 	DimCustomer
-*/
 
 -- TRANSLATE e STUFF: OUTRAS FUNÇÕES DE SUBSTITUIÇÃO
 
@@ -1552,20 +1551,99 @@ SELECT
 	STUFF('MT98-Moto G', 1, 2, 'Cel'), 
 	STUFF('AP01-IPhone', 1, 2, 'Cel'), 
 	STUFF('SS61-Samsung Galax', 1, 2, 'Cel')
+-- UPPER ---> transforma o texto em maiúscula
+-- LOWER ---> transforma o texto em minúscula
+-- Faça uma consulta à tabela DiCustomer e utilize as funções UPPER e LOWER na coluna de FirtsName para observar o resultado.
+SELECT 
+	FirstName AS 'NOME',
+	UPPER(FirstName) AS 'TUDO MAIÚSCULO',
+	LOWER(FirstName) AS 'TUDO MINÚSCULO',
+	EmailAddress AS 'E-MAIL'
+FROM 
+	DimCustomer
+-- FORMAT: formata um valor de acordo com uma formatação
+
+-- 1. formatação de número
+
+-- 5123
+
+-- geral
+SELECT FORMAT(5123, 'G') AS 'Formato geral' -- resultado sem formatação
+
+-- número
+SELECT FORMAT(5123, 'N') AS 'Formato numérico' -- resultado numérico
+
+-- moeda
+SELECT FORMAT(5123, 'C') AS 'Formato moeda' -- resultado em moeda
 
 
 
 
+-- 2. formatação de data
+
+-- 23/04/2020
+
+-- dd/MM,yyyy
+SELECT FORMAT(CAST('23/04/2020' AS DATETIME),'dd/MMMM/yyyy', 'en-US') AS 'Data'
+
+-- dia
+SELECT FORMAT(CAST('23/04/2020' AS DATETIME),'dd') AS 'Dia'
+
+-- mês
+SELECT FORMAT(CAST('23/04/2020' AS DATETIME), 'dddd') AS 'Mês'
+
+-- Ano
+SELECT FORMAT(CAST('23/04/2020' AS DATETIME), 'yyyy') AS 'Ano'
+
+-- 3. Formatação personalizada
+-- 1234567 --> 12-34-567
+SELECT FORMAT(1234567, '##-##-###') AS 'Formato Personalizado'
 
 
+-- CHARINDEX: descobre a posição de um determinado caracter dentro de um texto
+-- SUBSTRING: extrai alguns caracteres de dentro de um texto
+
+SELECT 'Raquel Moreno' AS 'Nome'
+
+-- Descubra a posição em que começa o sobrenome da Raquel utilizando a função CHARINDEX.
+SELECT CHARINDEX('M', 'Raquel Moreno') AS 'Posição do Caracter'
+SELECT CHARINDEX('Moreno', 'Raquel Moreno') AS 'Posição Inicial do Sobrenome'
+-- 'M' = o que extrair
+-- 'Raquel Moreno' = local da pesquisa
+
+-- extraia o sobrenome da Raquel utilizando a função SUBSTRING.
+SELECT SUBSTRING('Raquel Moreno', 8, 6) AS 'Sobrenome'
+-- 'Raquel Moreno' = local da pesquisa
+-- 8 = posição onde inicia a pesquisa
+-- 6 = quantidade de caracteres desejado a partir da posição onde inicia a pesquisa
 
 
+-- Combine as funções CHARINDEX e SUBSTRING para extrair de forma automática qualquer sobrenome
+DECLARE 
+	@varNome VARCHAR(100) = 'Leonardo Klestadt Luz', 
+	@varIncremento INT = + 1
+
+SELECT SUBSTRING(@varNome, CHARINDEX(' ', @varNome) + @varIncremento, 100) AS 'Sobrenome'
+*/
+
+-- Fuções para retirar espaços adicionais dentro de um texto
+-- TRIM: retira espaçõas adicionais à esquerda e à direita do texto 
+-- LTRIM: retira espaçõas adicionais à esquerda do texto 
+-- RTRIM: retira espaçõas adicionais à direita do texto
+
+-- Utilize as funções acima no código '   ABC123   '
+
+DECLARE @varCodigo VARCHAR(50)
+SET @varCodigo = '   ABC123   '
+
+SELECT TRIM(@varCodigo) AS 'Trim'
+SELECT LTRIM(@varCodigo) AS 'LTrim'
+SELECT RTRIM(@varCodigo) AS 'RTrim'
 
 
-
-
-
-
+SELECT DATALENGTH(TRIM(@varCodigo)) AS 'Trim'
+SELECT DATALENGTH(LTRIM(@varCodigo)) AS 'LTrim'
+SELECT DATALENGTH(RTRIM(@varCodigo)) AS 'RTrim'
 
 
 
