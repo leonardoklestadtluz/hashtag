@@ -1624,7 +1624,6 @@ DECLARE
 	@varIncremento INT = + 1
 
 SELECT SUBSTRING(@varNome, CHARINDEX(' ', @varNome) + @varIncremento, 100) AS 'Sobrenome'
-*/
 
 -- Fuções para retirar espaços adicionais dentro de um texto
 -- TRIM: retira espaçõas adicionais à esquerda e à direita do texto 
@@ -1646,15 +1645,78 @@ SELECT DATALENGTH(LTRIM(@varCodigo)) AS 'LTrim'
 SELECT DATALENGTH(RTRIM(@varCodigo)) AS 'RTrim'
 
 
+-- Utilize as funções DAY, MONTH e YEAR para descobrir o dia, mês e ano da data: 18/05/2020
+
+DECLARE @varData DATETIME
+SET @varData = '11/11/1984'
+
+SELECT 
+	DAY(@varData) AS 'Dia',
+	MONTH(@varData) AS 'Mês',
+	YEAR(@varData) AS 'Ano'
+
+-- Utilize a função DATEFROMPARTS para obter uma data a partir das informações de dia, mês e ano
+
+DECLARE @varDia INT, @varMes INT, @varAno INT
+SET @varDia = 12
+SET @varMes = 01
+SET @varAno = 1988
+
+SELECT 
+	DATEFROMPARTS(@varAno, @varMes, @varDia) AS 'DATA'
+
+-- GETDATE: Retorna a data/hora atual do sistema
+-- SYSDATETIME: Retorna a data/hora atual do sistema (mais preciso que a GETDATE)
+-- DATENAME e DATEPART: Retornam informações (dia, mês, ano, semana, etc) em uma data.
 
 
+SELECT GETDATE() AS 'Data e Hora Atuais'
+SELECT SYSDATETIME() AS 'Data e Hora Atuais mais Completas'
+
+-- DATENAME: retorna o resultado em forma de texto
+DECLARE @varData DATETIME
+SET @varData = GETDATE()
+
+SELECT
+	DATENAME(DAY, @varData) AS 'Dia da Data',
+	DATENAME(MONTH, @varData) AS 'Mês da Data',
+	DATENAME(YEAR, @varData) AS 'Ano da Data',
+	DATENAME(DAYOFYEAR, @varData) AS 'Dia do Ano',
+	DATENAME(WEEKDAY, @varData) AS 'Dia da Semana'
 
 
+-- DATEPART: retorna o resultado em forma de número
+SELECT
+	DATEPART(DAY, @varData) AS 'Dia da Data',
+	DATEPART(MONTH, @varData) AS 'Mês da Data',
+	DATEPART(YEAR, @varData) AS 'Ano da Data',
+	DATEPART(DAYOFYEAR, @varData) AS 'Dia do Ano',
+	DATEPART(WEEKDAY, @varData) AS 'Dia da Semana'
 
 
+SELECT
+	SQL_VARIANT_PROPERTY(DATENAME(DAY, @varData), 'BaseType') AS 'Tipo de Dado',
+	SQL_VARIANT_PROPERTY(DATEPART(DAY, @varData), 'BaseType') AS 'Tipo de Dado'
+*/
+
+-- DATEADD: Adiciona ou subtrai uma determinada quantidade de dias, meses e anos a uma data
+-- DATEDIFF: Calcula a diferença entre duas datas
+
+DECLARE @varData1 DATETIME, @varData2 DATETIME, @varData3 DATETIME
+SET @varData1 = '10/07/2020'
+SET @varData2 = '05/03/2020'
+SET @varData3 = '14/11/2021'
+
+-- DATEADD
+SELECT
+	DATEADD(MONTH, 1, @varData2) AS 'Somado 1 mês a partir da data1',
+	DATEADD(QUARTER, -1, @varData2) AS 'Subtraido 1 trimestre a partir da data1'
 
 
-
+-- DATEDIFF
+SELECT
+	DATEDIFF(DAY, @varData2, @varData3) AS 'Qtd. de dias entre data2 e data3',
+	DATEDIFF(WEEK, @varData1, @varData3) AS 'Qtd. de semanas entre data1 e data3'
 
 
 
