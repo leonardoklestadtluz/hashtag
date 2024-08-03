@@ -1551,6 +1551,7 @@ SELECT
 	STUFF('MT98-Moto G', 1, 2, 'Cel'), 
 	STUFF('AP01-IPhone', 1, 2, 'Cel'), 
 	STUFF('SS61-Samsung Galax', 1, 2, 'Cel')
+
 -- UPPER ---> transforma o texto em maiúscula
 -- LOWER ---> transforma o texto em minúscula
 -- Faça uma consulta à tabela DiCustomer e utilize as funções UPPER e LOWER na coluna de FirtsName para observar o resultado.
@@ -1685,7 +1686,7 @@ SELECT
 	DATENAME(WEEKDAY, @varData) AS 'Dia da Semana'
 
 
--- DATEPART: retorna o resultado em forma de número
+-- DATEPART/**/: retorna o resultado em forma de número
 SELECT
 	DATEPART(DAY, @varData) AS 'Dia da Data',
 	DATEPART(MONTH, @varData) AS 'Mês da Data',

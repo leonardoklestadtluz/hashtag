@@ -3335,5 +3335,78 @@ DimEmployee
 
 */
 
+/*	4. A tabela DimCustomer possui o primeiro registro de vendas no ano de 2001.
+
+Como forma de reconhecer os clientes que compraram nesse ano, o setor de Marketing solicitou a você que retornasse uma tabela com todos os clientes que fizeram a sua primeira compra neste ano para que seja enviado uma encomenda com um presente para cada um. 
+
+Para fazer esse filtro, você pode utilizar a coluna DateFirstPurchase, que contém a informação da data da primeira compra de cada cliente na tabela DimCustomer. 
+
+Você deverá retornar as colunas de FirstName, EmailAddress, AddressLine1 e DateFirstPurchase da tabela DimCustomer, considerando apenas os clientes que fizeram a primeira compra no ano de 2001.
+
+
+SELECT 
+	FirstName, 
+	EmailAddress, 
+	AddressLine1, 
+	DateFirstPurchase
+FROM 
+	DimCustomer
+WHERE
+	YEAR(DateFirstPurchase) = 2001
+ORDER BY 
+	DateFirstPurchase
+
+
+
+/*	5. A tabela DimEmployee possui uma informação de data de contratação (HireDate). A área de RH, no entanto, precisa das informações dessas datas de forma separada em dia, mês e ano, pois será feita uma automatização para criação de um relatório de RH, e facilitaria muito se essas informações estivessem separadas em uma tabela. 
+
+Você deverá realizar uma consulta à tabela DimEmployee e retornar uma tabela contendo as seguintes informações:
+	FirstName,
+	EmailAddress, 
+	HireDate, 
+	além das colunas de Dia, Mês e Ano de contratação.  
+
+Obs1: A coluna de Mês deve conter o nome do mês por extenso, e não o número do mês. 
+
+Obs2: Lembre-se de nomear cada uma dessas colunas em sua consulta para garantir que o 
+entendimento de cada informação ficará 100% claro.   
+
+*/
+
+-- SELECT * FROM DimEmployee
+
+SELECT 
+	FirstName AS 'Nome', 
+	EmailAddress AS 'E-mail', 
+	HireDate AS 'Data de Contratação', 
+	DATENAME(DAY, HireDate) AS 'Dia da Contratação',
+	DATENAME(MONTH, HireDate) AS 'Mês da Contratação',
+	DATENAME(YEAR, HireDate) AS 'Ano da Contratação'
+FROM 
+	DimEmployee
+
+*/
+
+
+/*	6. Descubra qual é a loja que possui o maior tempo de atividade (em dias). Você deverá fazer essa consulta na tabela DimStore, e considerar a coluna OpenDate como referência para esse cálculo. 
+*/
+
+SELECT 
+	StoreName AS 'Nome da Loja', 
+	OpenDate AS 'Data de Abertura', 
+	DATEDIFF(DAY, OpenDate, GETDATE()) AS 'Dias em Atividade'
+FROM 
+	DimStore
+WHERE
+	CloseDate IS NULL
+ORDER BY DATEDIFF(DAY, OpenDate, GETDATE())
+
+
+
+
+
+
+
+
 
 
