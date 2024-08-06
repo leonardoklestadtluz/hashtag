@@ -113,25 +113,23 @@
               <th>Foco</th>
             </tr>
           </thead>
-
           <tbody>
             <tr>
               <td>HTML</td>
+              <td>HyperText Markup Language</td>
+              <td>Construção de Páginas</td>
+            </tr>
+            <tr>
               <td>CSS</td>
+              <td>Cascading Style Sheets</td>
+              <td>Estilização de Páginas</td>
             </tr>
           </tbody>
         </table>
-        <p>HTML - HyperText Markup Language - Construção de Páginas</p>
-        <p>CSS - Cascading Style Sheets - Estilização de Páginas</p>
-
-
     
         <h2>Para mais detalhes</h2>
     
-        <p>
-          Um novo contexto de navegação para a página:
-          https://pt.wikipedia.org/wiki/HTML
-        </p>
+        <iframe src="https://pt.wikipedia.org/wiki/HTML" frameborder="0"></iframe>
       </section>
  
       <section>
@@ -141,27 +139,37 @@
           formulário abaixo:
         </p>
     
-        <p>Nome</p>
-        <p>Preencha seu nome</p>
-    
-        <p>E-mail</p>
-        <p>Preencha seu e-mail</p>
-    
-        <p>Enviar!</p>
+        <form action="">
+          <div>
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" placeholder="Preencha seu nome"></input>
+          </div>
+          
+          <div>
+            <label for="email">E-mail</label>
+            <input type="email" id="name" name="name" placeholder="Preencha seu e-mail"></input>
+          </div>
+               
+          <button type="submit">Enviar!</button>
+        </form>
       </section>
     </main>
 
     <!-- FOOTER -->
     <footer>
-      <h2>Informações de contato</h2>
-      <p>
-        Facebook:
-        <a href="https://facebook.com/mozilla">https://facebook.com/mozilla</a>
-      </p>
-      <p>
-        Twitter:
-        <a href="https://twitter.com/mozilla">https://twitter.com/mozilla</a>
-      </p>
+      <section>
+        <h2>Informações de contato</h2>
+        <address>
+          <p>
+            Facebook:
+            <a href="https://facebook.com/mozilla">https://facebook.com/mozilla</a>
+          </p>
+          <p>
+            Twitter:
+            <a href="https://twitter.com/mozilla">https://twitter.com/mozilla</a>
+          </p>
+        </address>
+      </section>
     </footer>
   </body>
 </html>
