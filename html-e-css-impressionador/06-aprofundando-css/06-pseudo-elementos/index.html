@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo-elementos</title>
+  </head>
+  <body>
+    <style>
+      p::before {
+        content: "Testinho que entra no início";
+      }
+      
+      p::after {
+        content: "Testinho que vai aparecer no final";
+      }
+
+      p::first-letter {
+        font-size: 60px;
+        font-weight: 700;
+      }
+
+      p::first-line {
+        color: brown;
+      }
+    </style>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laboriosam esse aliquid, magni reiciendis saepe necessitatibus doloremque? Repellat quaerat dolores, omnis facilis officia qui quis dicta sapiente aut. Quasi, illum?</p>
+  </body>
+</html>
