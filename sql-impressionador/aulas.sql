@@ -1698,7 +1698,6 @@ SELECT
 SELECT
 	SQL_VARIANT_PROPERTY(DATENAME(DAY, @varData), 'BaseType') AS 'Tipo de Dado',
 	SQL_VARIANT_PROPERTY(DATEPART(DAY, @varData), 'BaseType') AS 'Tipo de Dado'
-*/
 
 -- DATEADD: Adiciona ou subtrai uma determinada quantidade de dias, meses e anos a uma data
 -- DATEDIFF: Calcula a diferença entre duas datas
@@ -1718,6 +1717,106 @@ SELECT
 SELECT
 	DATEDIFF(DAY, @varData2, @varData3) AS 'Qtd. de dias entre data2 e data3',
 	DATEDIFF(WEEK, @varData1, @varData3) AS 'Qtd. de semanas entre data1 e data3'
+*/
+
+-- CASE : A função CASE permite tratar condições no SQL
+
+/*	CASE
+		WHEN teste_logico THEN 'resultado1'
+		ELSE 'resultado2'
+	END
+
+-- Dtermine a situação do aluno. Média >= 6: aprovado. Caso contrário: reprovado
+
+DECLARE @varNota FLOAT
+SET @varNota = 5.9
+
+SELECT 
+	CASE
+		WHEN @varNota >= 6 THEN 'Aprovado'
+		ELSE 'Reprovado'
+	END AS 'Situação do Aluno'
+
+
+-- A data de vencimento de um produto é no dia: 10/03/2022. Faça um teste lógico para verificar se um produto passou da validade ou não.
+
+DECLARE @varDataVencimento DATETIME, @varDataAtual DATETIME
+SET @varDataVencimento = '10/03/2022'
+SET @varDataAtual = GETDATE() --'30/04/2020'
+
+SELECT
+	CASE
+		WHEN @varDataAtual > @varDataVencimento THEN 'Produto Vencido'
+		ELSE 'Na Validade'
+	END AS 'Vencimento do Produto'
+
+-- Faça um SELECT das colunas CustomeKey, FirstName e Gender na tabela DimCustomer e utilize o CASE para criar uma 4ª coluna com a informação de 'Masculino' ou 'Feminino'.
+
+SELECT 
+	CustomerKey AS 'ID  Cliente', 
+	FirstName AS 'Nome', 
+	Gender AS 'Sexo',
+	CASE
+		WHEN Gender = 'M' THEN 'Masculino'
+		ELSE 'Feminino'
+	END AS 'Sexo (CASE)'
+FROM
+	DimCustomer
+*/
+
+-- CASE: A função CASE permite tratar condições no SQL
+
+/*	CASE
+		WHEN teste_lógico2 THEN 'resultado1'
+		WHEN teste_lógico2 THEN 'resultado2'
+		ELSE 'resultado3'
+	END
+
+Exemplo: 
+
+Crie um código para verificar a nota do aluno e determinar a situação:
+- Aprovado: nota maior ou igual a 6
+- Prova final: nota entre 4 e 6
+- Reprovado: nota abaixo de 4
+
+DECLARE @varNota FLOAT
+SET @varNota = 5.9
+
+SELECT 
+	CASE
+		WHEN @varNota >= 6 THEN 'Aprovado'
+		ELSE 'Reprovado'
+	END AS 'Situação do Aluno'
+*/
+
+DECLARE @varNota FLOAT
+SET @varNota = 9
+
+SELECT 
+	CASE
+		WHEN @varNota >= 6 THEN 'Aprovado'
+		WHEN @varNota BETWEEN 4 AND 6 THEN 'Prova Final'
+		ELSE 'Reprovado'
+	END AS 'Situação do Aluno'
+
+
+-- Classifique o produto de acordo com seu preço:
+-- Preço >= 40000: luxo
+-- Preço >= 10000 e Preço < 40000: econômico
+-- Preço < 10000: básico
+
+DECLARE @varPreco FLOAT
+SET @varPreco = 39999
+
+SELECT
+	CASE
+		WHEN @varPreco >= 40000 THEN 'LUXO'
+		WHEN @varPreco >= 10000 THEN 'ECONÔMICO'
+		ELSE 'BÁSICO'
+	END AS 'Tipo de Produto'
+
+
+
 
 
 
