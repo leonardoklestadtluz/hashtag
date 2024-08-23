@@ -1787,7 +1787,6 @@ SELECT
 		WHEN @varNota >= 6 THEN 'Aprovado'
 		ELSE 'Reprovado'
 	END AS 'Situação do Aluno'
-*/
 
 DECLARE @varNota FLOAT
 SET @varNota = 9
@@ -1814,6 +1813,162 @@ SELECT
 		WHEN @varPreco >= 10000 THEN 'ECONÔMICO'
 		ELSE 'BÁSICO'
 	END AS 'Tipo de Produto'
+
+
+SELECT 
+	CustomerKey AS 'ID  Cliente', 
+	FirstName AS 'Nome', 
+	Gender AS 'Sexo',
+	CASE
+		WHEN Gender = 'M' THEN 'Masculino'
+		WHEN Gender = 'F' THEN 'Feminino'
+		ELSE 'Empresa'
+	END AS 'Sexo (CASE)'
+FROM
+	DimCustomer
+
+
+-- CASE/AND e CASE/OR
+--Fcça uma consulta à tabela DimProduct, e retorne as colunas ProductName, BrandName, ColorName, UnitePrice e uma coluna de preço com desconto.
+
+
+-- a) Caso o produto seja da marca Contoso E da cor Red, o desconto do produto será de 10%. Caso contrário não terá nenhum desconto.
+SELECT 
+	ProductName, 
+	BrandName, 
+	ColorName, 
+	UnitPrice,
+	CASE
+		WHEN BrandName = 'Contoso' AND ColorName = 'Red' THEN 0.1
+		ELSE 0
+	END AS 'Preço com Desconto'
+FROM
+	DimProduct
+
+
+
+-- Caso produto seja da marca Litware OU Fabrikam, ele receberá um desconto de 5%. Caso contrário não terá nenhum desconto.
+
+SELECT 
+	ProductName, 
+	BrandName, 
+	ColorName, 
+	UnitPrice,
+	CASE
+		WHEN BrandName = 'Litware' OR BrandName = 'Fabrikam' THEN 0.05
+		ELSE 0
+	END AS 'Preço com Desconto'
+FROM
+	DimProduct
+
+
+-- CASE aninhado
+-- DimEmployee
+--SELECT * FROM DimEmployee
+
+-- 4 cargor (Title):
+-- Sales Group Manager
+-- Sales Region Manager
+-- Sales State Manager
+-- Sales Store Manager
+
+
+-- Assalariado (SalariedFlag)?
+-- SalariedFlag = 0: não é assalariado
+-- SalariedFlag = 1: é assalariado
+
+-- Situação: Cálculo do bônus
+-- Sales Group Manager: Se for assalariado, 30%; Se não, 20%
+-- Sales Region Manager: 15%
+-- Sales State Manager: 7%
+-- Sales Store Manager: 2%
+
+
+SELECT 
+	FirstName,
+	Title,
+	SalariedFlag,
+	CASE
+		WHEN Title = 'Sales Group Manager' THEN
+		CASE 
+			WHEN SalariedFlag = 1 THEN 0.3
+			ELSE 0.2
+		END
+		WHEN Title = 'Sales Region Manager' THEN 0.15
+		WHEN Title = 'Sales State Manager' THEN 0.07
+		ELSE 0.02
+	END AS 'Bônus'
+FROM 
+	DimEmployee
+ORDER BY
+	FirstName
+
+
+-- Case Aditivo
+-- Os produtos da categoria 'TV and Video' terão um desconto de 10%.
+-- Se além de ser da categoria 'TV and Video', o produto for da subcategoria 'Televisions', receberá mais 5%. Total 15%.
+
+SELECT 
+	DP.ProductKey,
+	DP.ProductName,
+	DPC.ProductCategoryName,
+	DPS.ProductSubCategoryName,
+	DP.UnitPrice,
+	CASE
+		WHEN DPC.ProductCategoryName = 'TV and Video' THEN 0.10
+		ELSE 0
+	END
+	+
+	CASE
+		WHEN DPS.ProductSubcategoryName = 'Televisions' THEN 0.05
+		ELSE 0
+	END AS 'Desconto'
+FROM 
+	DimProduct DP
+INNER JOIN
+	DimProductSubcategory DPS
+ON DP.ProductSubcategoryKey = DPS.ProductSubcategoryKey
+INNER JOIN
+	DimProductCategory DPC
+ON
+	DPS.ProductCategoryKey = DPC.ProductCategoryKey
+	
+-- Função IIF: Alternativa ao CASE
+-- Exemplo 1: Qual é a categoria de risco do projeto abaixo, de acordo com sua nota:
+-- Risco alto: classificado >= 5
+-- Risco baixo: classificado < 5
+
+DECLARE @varClassificacao INT
+SET @varClassificacao = 3
+
+SELECT 
+	IIF(
+		@varClassificacao >= 5,
+		'Risco Alto',
+		'Risco Baixo'
+	) AS 'Classificação de Risco'
+
+
+
+
+-- Exemplo 2: Crie uma coluna única de 'Cliente', contendo o nome do cliente, seja eleuma pessoa ou empresa. Traga também a coluna de CustomerKey e CustomerType.
+
+-- SELECT * FROM DimCustomer
+
+SELECT 
+	CustomerKey,
+	CustomerType,
+	IIF(
+		CustomerType = 'Person',
+		FirstName,
+		CompanyName
+	) AS 'Cliente'
+FROM
+	DimCustomer
+*/
+
+
+
 
 
 
