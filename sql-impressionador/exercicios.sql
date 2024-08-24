@@ -3385,7 +3385,6 @@ SELECT
 FROM 
 	DimEmployee
 
-*/
 
 
 /*	6. Descubra qual é a loja que possui o maior tempo de atividade (em dias). Você deverá fazer essa consulta na tabela DimStore, e considerar a coluna OpenDate como referência para esse cálculo. 
@@ -3400,6 +3399,127 @@ FROM
 WHERE
 	CloseDate IS NULL
 ORDER BY DATEDIFF(DAY, OpenDate, GETDATE())
+
+
+
+
+/*	1. O setor de vendas decidiu aplicar um desconto aos produtos de acordo com a sua classe. O percentual aplicado deverá ser de: 
+
+Economy -> 5% 
+Regular -> 7% 
+Deluxe -> 9% 
+
+a) Faça uma consulta à tabela DimProduct que retorne as seguintes colunas: ProductKey, ProductName, e outras duas colunas que deverão retornar o % de Desconto e UnitPrice com desconto.
+
+b) Faça uma adaptação no código para que os % de desconto de 5%, 7% e 9% sejam facilmente modificados (dica: utilize variáveis).
+
+*/
+
+-- a) Faça uma consulta à tabela DimProduct que retorne as seguintes colunas: ProductKey, ProductName, e outras duas colunas que deverão retornar o % de Desconto e UnitPrice com desconto.
+
+-- Economy -> 5% 
+-- Regular -> 7% 
+-- Deluxe -> 9% 
+
+-- SELECT TOP (10) * FROM DimProduct
+
+SELECT 
+	ProductKey AS 'Código do Produto', 
+	ProductName AS 'Nome do Produto',
+	ClassName AS 'Classe do Produto',
+	CASE
+		WHEN ClassName = 'Economy' THEN (1 - 0.05) * UnitPrice
+		WHEN ClassName = 'Regular' THEN (1 - 0.07)
+		ELSE (1 - 0.09) * UnitPrice
+	END AS '% Desconto'
+FROM 
+	DimProduct 
+
+
+-- b) Faça uma adaptação no código para que os % de desconto de 5%, 7% e 9% sejam facilmente modificados (dica: utilize variáveis).
+
+DECLARE @varEconomy FLOAT, @varRegular FLOAT, @varDeluxe FLOAT, @varClasseProduto VARCHAR(15)
+SET @varClasseProduto = 'Economy'
+SET @varEconomy = 0.05
+SET @varRegular = 0.07
+SET @varDeluxe = 0.09
+
+SELECT 
+	ProductKey AS 'Código do Produto', 
+	ProductName AS 'Nome do Produto',
+	ClassName AS 'Classe do Produto',
+	CASE
+		WHEN @varClasseProduto = 'Economy' THEN (1 - @varEconomy) * UnitPrice
+		WHEN @varClasseProduto = 'Regular' THEN (1 - @varRegular) * UnitPrice
+		ELSE (1 - @varDeluxe) * UnitPrice
+	END AS 'Desconto',
+	UnitPrice AS 'Preço com Desconto'
+FROM 
+	DimProduct 
+
+
+
+/*	2. Você ficou responsável pelo controle de produtos da empresa e deverá fazer uma análise da quantidade de produtos por Marca.
+
+A divisão das marcas em categorias deverá ser a seguinte: 
+
+CATEGORIA A: Mais de 500 produtos  
+CATEGORIA B: Entre 100 e 500 produtos  
+CATEGORIA C: Menos de 100 produtos  
+
+Faça uma consulta à tabela DimProduct e retorne uma tabela com um agrupamento de Total de Produtos por Marca, além da coluna de Categoria, conforme a regra acima.
+*/
+
+SELECT 
+	BrandName AS 'Marca', 
+	COUNT(*) AS 'Qtd. Produtos',
+	CASE
+		WHEN COUNT(*) >= 500 THEN 'CATEGORIA A'
+		WHEN COUNT(*) >= 100 THEN 'CATEGORIA B'
+		ELSE 'CATEGORIA C'
+	END AS 'Categoria'
+FROM 
+	DimProduct 
+GROUP BY 
+	BrandName
+
+/*	3. Será necessário criar uma categorização de cada loja da empresa considerando a quantidade de funcionários de cada uma. A lógica a ser seguida será a lógica abaixo: 
+
+EmployeeCount >= 50; 'Acima de 50 funcionários' 
+EmployeeCount >= 40; 'Entre 40 e 50 funcionários' 
+EmployeeCount >= 30; 'Entre 30 e 40 funcionários' 
+EmployeeCount >= 20; 'Entre 20 e 30 funcionários' 
+EmployeeCount >= 40; 'Entre 10 e 20 funcionários' 
+Caso contrário: 'Abaixo de 10 funcionários' 
+
+Faça uma consulta à tabela DimStore que retorne as seguintes informações: StoreName, EmployeeCount e a coluna de categoria, seguindo a regra acima
+*/
+
+SELECT 
+	StoreName AS 'Nome da Loja',
+	EmployeeCount AS 'Qtd. Funcionários',
+	CASE
+		WHEN EmployeeCount >= 50 THEN 'Acima de 50 funcionários'
+		WHEN EmployeeCount >= 40 THEN 'Entre 40 e 50 funcionários'
+		WHEN EmployeeCount >= 30 THEN 'Entre 30 e 40 funcionários'
+		WHEN EmployeeCount >= 20 THEN 'Entre 20 e 30 funcionários'
+		WHEN EmployeeCount >= 10 THEN 'Entre 10 e 20 funcionários'
+		ELSE 'Abaixo de 10 funcionários'
+	END AS 'Categoria'
+FROM 
+	DIMSTORE
+*/
+
+
+
+
+
+
+
+
+
+
+
 
 
 
