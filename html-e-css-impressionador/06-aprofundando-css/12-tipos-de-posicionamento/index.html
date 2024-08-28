@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Posicionamento</title>
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      html {font-size: 62.5%;}
+
+      /* position: static, relative, absolute, fixed */
+
+      h1 {font-size: 3.2rem;}
+
+      h2 {font-size: 2.4rem;}
+
+      p {
+        display: block;
+        font-size: 1.6rem;
+
+        position: fixed;
+        bottom: 10rem;
+        right: 3rem;
+      }
+
+      a:first-child {
+        color: inherit;
+        font-size: 1.6rem;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+
+      div {
+        position: relative;
+        /* top: 20rem;
+        left: 30rem; */
+
+        height: 20rem;
+        width: 20rem;
+        background-color: green;
+        color: white;
+      }
+    </style>
+
+    <div>
+      <a href="">Acesse meu site!</a>  
+      <a href="">Outro acesse meu site!</a>  
+    </div>
+
+    <p>Parágrafo</p>
+  </body>
+</html>
