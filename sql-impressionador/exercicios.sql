@@ -3508,7 +3508,118 @@ SELECT
 	END AS 'Categoria'
 FROM 
 	DIMSTORE
+
+/*	4. O setor de logística deverá realizar um transporte de carga dos produtos que estão no depósito de Seattle para o depósito de Sunnyside.  
+
+Não se tem muitas informações sobre os produtos que estão no depósito, apenas se sabe que existem 100 exemplares de cada Subcategoria. Ou seja, 100 laptops, 100 câmeras digitais, 100 ventiladores, e assim vai. 
+
+O gerente de logística definiu que os produtos serão transportados por duas rotas distintas. Além disso, a divisão dos produtos em cada uma das rotas será feita de acordo com as subcategorias (ou seja, todos os produtos de uma mesma subcategoria serão transportados pela mesma rota): 
+
+Rota 1: As subcategorias que tiverem uma soma total menor que 1000 kg deverão ser transportados pela Rota 1. 
+
+Rota 2: As subcategorias que tiverem uma soma total maior ou igual a 1000 kg deverão ser 
+transportados pela Rota 2. 
+
+Você deverá realizar uma consulta à tabela DimProduct e fazer essa divisão das subcategorias por cada rota. 
+
+Algumas dicas: 
+- Dica 1: A sua consulta deverá ter um total de 3 colunas: Nome da Subcategoria, Peso Total e Rota. 
+
+- Dica 2: Como não se sabe quais produtos existem no depósito, apenas que existem 100 exemplares de cada subcategoria, você deverá descobrir o peso médio de cada subcategoria e multiplicar essa média por 100, de forma que você descubra aproximadamente qual é o peso total dos produtos por subcategoria. 
+
+- Dica 3: Sua resposta final deverá ter um JOIN e um GROUP BY. 
+
 */
+
+DECLARE @varQtdExemplares INT
+SET @varQtdExemplares = 100
+
+SELECT 
+	DPS.ProductSubcategoryName AS 'Nome da Subcategoria', 
+	ROUND(AVG(Weight) * @varQtdExemplares, 2) AS 'Peso Médio',
+	CASE
+		WHEN ROUND(AVG(Weight) * @varQtdExemplares, 2) >= 1000 THEN 'Rota 2'
+		ELSE 'Rota 1'
+	END AS 'Rota'	
+FROM 
+	DimProduct AS DP 
+INNER JOIN 
+	DimProductSubcategory AS DPS 
+ON 
+	DP.ProductSubcategoryKey = DPS.ProductSubcategoryKey 
+GROUP BY 
+	DPS.ProductSubcategoryName
+
+/*	5. O setor de marketing está com algumas ideias de ações para alavancar as vendas em 2021. Uma delas consiste em realizar sorteios entre os clientes da empresa.  
+
+Este sorteio será dividido em categorias: 
+
+‘Sorteio Mãe do Ano’: Nessa categoria vão participar todas as mulheres com filhos. 
+‘Sorteio Pai do Ano’: Nessa categoria vão participar todos os pais com filhos. 
+‘Caminhão de Prêmios’: Nessa categoria vão participar todas os demais clientes (homens e mulheres sem filhos).
+
+Seu papel será realizar uma consulta à tabela DimCustomer e retornar 3 colunas: 
+
+- FirstName AS ‘Nome’ 
+
+- Gender AS ‘Sexo’ 
+
+- TotalChildren AS ‘Qtd. Filhos’ 
+
+- EmailAdress AS ‘E-mail’ 
+
+- Ação de Marketing: nessa coluna você deverá dividir os clientes de acordo com as categorias:
+
+‘Sorteio Mãe do Ano’ 
+‘Sorteio Pai do Ano’
+‘Caminhão de Prêmios’
+*/
+
+--SELECT TOP(10) * FROM DimCustomer
+
+SELECT 
+	FirstName AS 'Nome do Cliente', 
+	Gender AS 'Sexo', 
+	TotalChildren AS 'Qtd. Filhos', 
+	EmailAddress AS 'E-mail',
+	CASE
+		WHEN Gender = 'F' AND TotalChildren > 0 THEN 'Sorteio Mãe do Ano'
+		WHEN Gender = 'M' AND TotalChildren > 0 THEN 'Sorteio Pai do Ano'
+		ELSE 'Caminhão de Prêmios'
+	END AS 'Categoria do Sorteio'
+FROM 
+	DimCustomer
+*/
+	
+
+/*	6. Descubra qual é a loja que possui o maior tempo de atividade (em dias). Você deverá fazer essa consulta na tabela DimStore, e considerar a coluna OpenDate como referência para esse cálculo. 
+
+Atenção: lembre-se que existem lojas que foram fechadas.
+*/
+
+--SELECT * FROM DimStore WHERE Status <> 'Off'
+
+SELECT 
+	StoreName AS 'Nome da Loja', 
+	OpenDate AS 'Data de Abertura',
+	CloseDate AS 'Data de Fechamento',
+	CASE
+		WHEN CloseDate IS NULL THEN DATEDIFF(DAY, OpenDate, GETDATE())
+		ELSE DATEDIFF(DAY, OpenDate, CloseDate)
+	END AS 'Dias em Atividade'
+FROM 
+	DimStore 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
