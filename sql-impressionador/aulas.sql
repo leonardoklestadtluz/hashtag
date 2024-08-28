@@ -2007,6 +2007,54 @@ FROM
 */
 
 
+-- 13. [SQL Server] SQL Views
+
+/* Criando a primeira view
+
+Quando falamos de views, existem 3 ações envovidas:
+1. Criação de uma View
+2. Alteração de uma View
+3. Exclusão de uma View
+
+Para cada uma dessas ações, temos um comando associado:
+1. CREATE VIEW
+2. ALTER VIEW
+3. DROP VIEW
+*/
+
+-- 1. CREATE VIEW
+-- a) Crie uma VIEW contendo as seguintes informações da tabela DimCustomer: FirstName, EmailAddress e BirthDate. Chame essa view de vwClientes.
+
+CREATE VIEW vwClientes AS
+SELECT 
+	FirstName AS 'Nome', 
+	EmailAddress AS 'E-mail', 
+	BirthDate AS 'Data de Nascimento' 
+FROM 
+	DimCustomer
+
+SELECT * FROM vwClientes
+
+
+-- Crie uma view contendo as seguintes informações da tabela DimProduct: ProductKey, ProductName, ProductSubcategoryKey, BrandName e UnitPrice. Chame essa view de vwProdutos
+
+CREATE VIEW vwProdutos AS
+SELECT 
+	ProductKey AS 'Código', 
+	ProductName AS 'Nome', 
+	ProductSubcategoryKey AS 'Código Subcategoria', 
+	BrandName AS 'Marca', 
+	UnitPrice AS 'Preço Unitário' 
+FROM 
+	DimProduct 
+
+SELECT * FROM vwProdutos
+
+
+
+
+
+
 
 
 
