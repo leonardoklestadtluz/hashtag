@@ -2004,12 +2004,13 @@ SELECT
 	ISNULL(CityName, 'Local Desconhecido')
 FROM
 	DimGeography
-*/
 
 
 -- 13. [SQL Server] SQL Views
 
 /* Criando a primeira view
+
+OBSERVAÇÃO: AS INSTRUÇÕES DE CREATE VIEW DEVEM SER LIMITADAS ENTRE OS COMANDOS GO
 
 Quando falamos de views, existem 3 ações envovidas:
 1. Criação de uma View
@@ -2024,21 +2025,21 @@ Para cada uma dessas ações, temos um comando associado:
 
 -- 1. CREATE VIEW
 -- a) Crie uma VIEW contendo as seguintes informações da tabela DimCustomer: FirstName, EmailAddress e BirthDate. Chame essa view de vwClientes.
-
-CREATE VIEW vwClientes AS
+GO
+CREATE VIEW vwClientes2 AS
 SELECT 
 	FirstName AS 'Nome', 
 	EmailAddress AS 'E-mail', 
 	BirthDate AS 'Data de Nascimento' 
 FROM 
 	DimCustomer
-
+GO
 SELECT * FROM vwClientes
 
 
--- Crie uma view contendo as seguintes informações da tabela DimProduct: ProductKey, ProductName, ProductSubcategoryKey, BrandName e UnitPrice. Chame essa view de vwProdutos
-
-CREATE VIEW vwProdutos AS
+-- b) Crie uma view contendo as seguintes informações da tabela DimProduct: ProductKey, ProductName, ProductSubcategoryKey, BrandName e UnitPrice. Chame essa view de vwProdutos
+GO
+CREATE VIEW vwProdutos2 AS
 SELECT 
 	ProductKey AS 'Código', 
 	ProductName AS 'Nome', 
@@ -2047,11 +2048,57 @@ SELECT
 	UnitPrice AS 'Preço Unitário' 
 FROM 
 	DimProduct 
-
+GO
 SELECT * FROM vwProdutos
 
 
+-- 2. ALTER VIEW
+-- a) Altere a view criada no exemplo 1a para incluir apenas os clientes do sexo Feminino.
 
+SELECT * FROM vwClientes
+
+GO
+	ALTER VIEW vwClientes AS
+	SELECT 
+		FirstName AS 'Nome',
+		EmailAddress AS 'E-mail',
+		BirthDate AS 'Data de Nascimento',
+		Gender AS 'Sexo'
+	FROM 
+		DimCustomer
+	WHERE
+		Gender = 'F'
+GO
+
+-- b) Altere a view criada no exemplo 1b para incluir apenas os produtos da subactegoria 'Televisions'.
+
+SELECT * FROM DimProduct
+
+SELECT * FROM DimProductSubcategory
+
+
+SELECT * FROM vwProdutos
+
+GO
+	SELECT
+		ProductKey AS 'Código', 
+		ProductName AS 'Nome', 
+		ProductSubcategoryKey AS 'Código Subcategoria', 
+		BrandName AS 'Marca', 
+		UnitPrice AS 'Preço Unitário'
+	FROM 
+		DimProduct
+	WHERE 
+		ProductSubcategoryKey = 9
+GO
+*/
+
+-- 3. DROP VIEW
+-- Exclua as Views vmClientes e vmProdutos
+
+
+DROP VIEW vwClientes
+DROP VIEW vwProdutos
 
 
 
