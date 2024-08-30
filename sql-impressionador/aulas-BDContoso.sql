@@ -1,6 +1,5 @@
-USE ContosoRetailDW
+/* USE ContosoRetailDW
 
-/*
 -- 4. [SQL Server] Introdução ao SQL
 
 
@@ -2091,7 +2090,6 @@ GO
 	WHERE 
 		ProductSubcategoryKey = 9
 GO
-*/
 
 -- 3. DROP VIEW
 -- Exclua as Views vmClientes e vmProdutos
@@ -2099,6 +2097,25 @@ GO
 
 DROP VIEW vwClientes
 DROP VIEW vwProdutos
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
