@@ -92,12 +92,38 @@ VALUES
 	(9, 'André'		, 1000, '13/03/1994'),
 	(10, 'Julio'	, 4700, '05/07/1992')
 
-SELECT * FROM Funcionarios
 
 */
 
 
- -- SELECT * FROM Produtos
+-- 14. ALTER TABLE
+
+-- ALTER TABLE: ADICIONAR colunas, ALTERAR tipos de dados de uma coluna e DELETAR coluna.
+
+-- utilize a tabela funcionardios mostrada na aula anterior.
+
+ALTER TABLE Funcionarios
+ADD cargo VARCHAR(100), bonus FLOAT
+
+
+
+UPDATE Funcionarios
+SET cargo = 'Analista', bonus = 0.15
+WHERE id_funcionario = 1
+
+
+
+-- alterar tipo de dados de uma coluna
+ALTER TABLE Funcionarios
+ALTER COLUMN salario INT
+
+
+-- deletar uma coluna
+ALTER TABLE Funcionarios
+DROP COLUMN cargo, bonus
+
+
+-- SELECT * FROM Funcionarios
 
 
 
