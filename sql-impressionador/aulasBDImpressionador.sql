@@ -93,7 +93,6 @@ VALUES
 	(10, 'Julio'	, 4700, '05/07/1992')
 
 
-*/
 
 
 -- 14. ALTER TABLE
@@ -125,6 +124,7 @@ DROP COLUMN cargo, bonus
 
 -- SELECT * FROM Funcionarios
 
+*/
 
 
 
