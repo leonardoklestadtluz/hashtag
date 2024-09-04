@@ -87,7 +87,6 @@ SELECT * FROM fContratos
 (2) um novo gerente (id gerente, nome, data de contratação e salário) 
 (3) um novo contrato (id, data assinatura, id cliente, id gerente, valor do contrato)
 
-*/
 
 -- TABELA dCliente
 INSERT INTO dCliente(ID_Cliente, Nome_Cliente, Data_de_Nascimento)
@@ -100,10 +99,31 @@ VALUES(5, 'Astolfo', '29/02/2012', 36700)
 -- TABELA fContratos
 INSERT INTO fContratos(ID_Contrato, Data_de_Assinatura, ID_Cliente, ID_Gerente, Valor_do_Contrato)
 VALUES(11, '13/012/2013', 11,  2, 53000)
+*/
+
+
+/*	5. O contrato de ID igual a 4 foi registrado com alguns erros na tabela fContratos. Faça uma 
+alteração na tabela atualizando os seguintes valores: 
+
+Data_de_Assinatura: 17/03/2019 
+ID_Gerente: 2 
+Valor_do_Contrato: 33500 
+
+UPDATE fContratos
+SET 
+	Data_de_Assinatura = '17/03/2019', -- ERA 2019-03-15 00:00:00.000
+	ID_Gerente = 2, -- ERA 3
+	Valor_do_Contrato = 33500 -- ERA 33000
+WHERE ID_Contrato = 4
+
+-- 6. Delete a linha da tabela fContratos que você criou na questão 4.
+DELETE FROM fContratos
+WHERE ID_Contrato = 11
 
 SELECT * FROM dCliente
 SELECT * FROM dGerente
 SELECT * FROM fContratos
+*/
 
 
 
