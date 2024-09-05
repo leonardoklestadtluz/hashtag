@@ -2099,34 +2099,188 @@ DROP VIEW vwClientes
 DROP VIEW vwProdutos
 */
 
+/*	1. O que é uma subquery?
+
+Uma subquery (subconsulta ou subselect), nada mais é do que uma consulta dentro de outra consulta. Ou seja, com uma subquery conseguimos utilizar o resultado de uma query (consulta ou SELECT) dentro de outra consulta ou SELECT.
+
+Em resumo, uma subquery é um select dentro de outro select.
+
+2. Onde utilizamos uma subquery?
+
+Subquerys podem ser utilizadas em 3 situações possíveis:
+
+1. junto com WHERE, funcionando como um filtro variável.
+2. junto com SELECT, como uma nova coluna na tabela.
+3. junto com o FROM, como uma nova tabela.
 
 
+Ex:
+
+Imagina que eu quero selecionar os produtos com preço maior do que a média
 
 
+-- 1º PASSO,DESCOBRIR A MÉDIA
+SELECT AVG(UnitPrice) FROM DimProduct
+
+-- 2º PASSO, FILTRAR PREÇOS ACIMA DA MÉDIA
+SELECT * FROM DimProduct WHERE UnitPrice > 356.8301
+
+-- SUBQUERY
+SELECT * FROM DimProduct WHERE UnitPrice > (SELECT AVG(UnitPrice) FROM DimProduct)
+
+-- 3. ALGUNS EXEMPLOS...
+
+-- em 4 situações possíveis
+
+-- 1 - subquery junto com WHERE, como um filtro dinâmico e escalar (valor único)
+
+-- SELECT coluna1, coluna2 FROM tabela WHERE coluna1 = (SELECT)
 
 
+-- 2 - subquery junto com WHERE, como um filtro dinâmico e em lista (vários valores)
+
+-- SELECT coluna1, coluna2 FROM tabela WHERE coluna1 IN (SELECT)
 
 
+-- 3 - subquery junto com SELECT, como uma nova coluna
+
+-- SELECT coluna1, coluna2, (SELECT) FROM tabela
+
+-- 4 - subquery junto com FROM, como uma nova tabela
+
+-- SELECT coluna1, coluna2 FROM (SELECT) AS T
+
+	Para entender aideia por trás das subqueries, vamos começar fazendo 3 exemplos co a aplicação WHERE.
+
+No exemplo 1, imagine que você queira fazer uma consulta à tabela DimProduct e considerar apenas os produtos com os custos acima da média. Como poderíamos afzer isso?
 
 
+SELECT AVG(UnitCost) FROM DimProduct
+
+SELECT * FROM DimProduct WHERE UnitCost >= (SELECT AVG(UnitCost) FROM DimProduct)
+
+-- No exemplo 2, queremos filtrar nossa tabela DimProduct e retornar os produtos da categoria Televisions. Porém, não temos a informação de nome da subcategoria na tabela Dim Product. Dessa forma, precisaremos criar um select que descubra o ID da subcategoria Televisions, e passar esse resultado como o valor que queremos filtrar dentro do WHERE.
+
+SELECT * FROM DimProduct
+WHERE ProductSubcategoryKey = (
+                                SELECT ProductSubcategoryKey
+							    FROM DimProductSubcategory 
+							    WHERE ProductSubcategoryName = 'Televisions'
+							  )
+
+-- No exemplo 3, queremos filtrar nossa tabela FactSales e mostrar as vendas referentes às lojas com 100 ou mais funcionários
+
+SELECT * FROM FactSales WHERE StoreKey IN (SELECT StoreKey FROM DimStore WHERE EmployeeCount >= 100)
+
+CREATE TABLE FUNCIONARIOS(
+	ID_FUNCIONARIOS INT,
+	NOME VARCHAR(50),
+	IDADE INT,
+	SEXO VARCHAR(50)
+)
+
+INSERT INTO FUNCIONARIOS(ID_FUNCIONARIOS, NOME, IDADE, SEXO)
+VALUES
+	(1, 'JULIA', 20, 'F'),
+	(2, 'DANIEL', 21, 'M'),
+	(3, 'AMANDA', 22, 'F'),
+	(4, 'PEDRO', 23, 'M'),
+	(5, 'ANDRÉ', 24, 'M'),
+	(6, 'LUISA', 25, 'F')
+
+SELECT * FROM FUNCIONARIOS
+
+-- ANY, SOME E ALL
+
+-- selecione os funcionários do sexo masculino, mas utilizando a coluna de idade
+
+SELECT 
+	* 
+FROM 
+	FUNCIONARIOS 
+WHERE 
+	IDADE IN (21, 23, 24)
+
+SELECT 
+	* 
+FROM 
+	FUNCIONARIOS 
+WHERE 
+	IDADE IN (SELECT IDADE FROM FUNCIONARIOS WHERE SEXO = 'M')
 
 
+-- = ANY(valor1, valor2, valor3): 
+-- Equivalente ao IN, retorna as linhas da tabela que sejam iguais ao valor1, valor2 e valor3
+SELECT 
+	* 
+FROM 
+	FUNCIONARIOS 
+WHERE 
+	IDADE = ANY (SELECT IDADE FROM FUNCIONARIOS WHERE SEXO = 'M')
 
 
+-- > ANY(valor1, valor2, valor3): 
+-- Retorna as linhas da tabela com valores maiores que o valor1, OU valor2 e OU valor3. Ou seja, maior que o mínimo
+SELECT 
+	* 
+FROM 
+	FUNCIONARIOS 
+WHERE 
+	IDADE >= ANY (SELECT IDADE FROM FUNCIONARIOS WHERE SEXO = 'M')
 
 
+-- < SOME(valor1, valor2, valor3): 
+-- Retorna as linhas da tabela com valores maiores que o valor1, OU valor2 e OU valor3. Ou seja, menor que o máximo
+SELECT 
+	* 
+FROM 
+	FUNCIONARIOS 
+WHERE 
+	IDADE < SOME (SELECT IDADE FROM FUNCIONARIOS WHERE SEXO = 'M')
 
 
+-- > ALL(valor1, valor2, valor3): 
+-- Retorna as linhas da tabela com valores maiores que o valor1, E valor2 e E valor3. Ou seja, menor que o máximo
+SELECT 
+	* 
+FROM 
+	FUNCIONARIOS 
+WHERE 
+	IDADE > ALL (SELECT IDADE FROM FUNCIONARIOS WHERE SEXO = 'M')
 
 
+-- > ALL(valor1, valor2, valor3): 
+-- Retorna as linhas da tabela com valores maiores que o valor1, E valor2 e E valor3. Ou seja, menor que o mínimo
+SELECT 
+	* 
+FROM 
+	FUNCIONARIOS 
+WHERE 
+	IDADE < ALL (SELECT IDADE FROM FUNCIONARIOS WHERE SEXO = 'M')
+*/
 
+-- EXISTS
+-- Retornar uma tabela com todos os produtos (id produto, nome produto) que possuem alguma venda no dia 01/01/2007
 
+SELECT COUNT(*) FROM DimProduct --2.517 produtos
 
+SELECT TOP(100) * FROM FactSales
 
-
-
-
-
+SELECT 
+	ProductKey, 
+	ProductName 
+FROM 
+	DimProduct
+WHERE EXISTS(
+		SELECT 
+			ProductKey
+		FROM
+			FactSales
+		WHERE
+			DateKey = '01/01/2007'
+		AND
+			FactSales.ProductKey = DimProduct.ProductKey
+      )
 
 
 
