@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dialog</title>
+</head>
+<body>
+  <buttom class="js-abrir">Abrir</buttom>
+
+  <dialog class="dialog">
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam necessitatibus dolores assumenda molestiae, possimus consectetur aliquid aut, numquam recusandae similique placeat rerum odit nobis et obcaecati animi quae inventore aspernatur.
+    </p>
+    <button class="js-fechar">Fechar</button>
+  </dialog>
+
+  <script>
+    let elemBotaoAbrir = document.querySelector("js-abrir")
+    let elemBotaoFechar = document.querySelector("js-fechar")
+    let elemDialog = document.querySelector("dialog")
+
+    elemBotaoAbrir.addEventListener("click", () => {
+      elemDialog.showModal()
+    })
+
+    elemBotaoFechar.addEventListener("click", () => {
+      elemDialog.close()
+    })
+  </script>
+</body>
+</html>
