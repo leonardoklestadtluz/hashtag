@@ -34,8 +34,13 @@ h1 {
 }
 
 h2 {
-  font-size: 3.5rem;
+  font-size: 2.76rem;
+  line-height: 1.1;
   font-weight: 400;
+}
+
+ul {
+  list-style: none;
 }
 
 strong {
@@ -91,10 +96,6 @@ strong {
 /* Temporário */
 nav {display: none;}
 
-nav ul {
-  list-style: none;
-}
-
 .item-lista-cabecalho a {
   color: #112e61;
   font-size: 1.4rem;
@@ -139,6 +140,52 @@ nav ul {
 }
 
 /* Seção Conteúdos Gratuitos */
+.secao-conteudos {
+  background-image: url(https://www.hashtagtreinamentos.com/wp-content/uploads/2022/06/BACKGROUN-banner-02.png);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.circulo-logo-curso {
+  background-color: #E7E7E7;
+  border-radius: 50%;
+  box-shadow: inset 0 0 2rem 0.2rem rgba(0, 0, 0, 0.20);
+  display: inline-block;
+  height: 4.5rem;
+  padding: 1.02rem;
+  width: 4.5rem;
+}
+
+.circulo-logo-curso img {
+  width: 100%;
+}
+
+.img-conteudos {
+  width: 44rem;
+}
+
+.caixa-cursos-hashtag {
+  box-shadow: inset 0 0 1rem 0.2rem rgba(0, 0, 0, 0.20);
+  border-radius: 2.5rem;
+  padding: 2rem;
+  position: relative;
+}
+
+.caixa-gratuito-h3 {
+  background-image: linear-gradient(90deg, #AA56E6, #6D42B9);
+  box-shadow: 0 0.21rem 0.4rem rgba(0, 0, 0, 0.15);
+  border-radius: 1rem;
+  color: #ffffff;
+  display: inline-block;
+  padding: 0.42rem 1.6rem;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: rotate(-4deg) translate(-50%, -50%);
+
+}
+
 .gratuito-realce {
   color: #7a40be;
   font-weight: 600;
@@ -149,14 +196,28 @@ nav ul {
   font-weight: 700;
 }
 
-.gratuito-link-lista {
-  font-size: 1.9rem;
+.gratuito-link-lista:link, .gratuito-link-lista:visited {
+  background-color: #EEEEEE;
+  border-radius: 3rem;
+  box-shadow: inset 0 0 2rem 0.2rem rgba(0, 0, 0, 0.20);
+  color: inherit;
+  display: inline-block;
+  padding: 0.42rem 1.6rem;
+  font-size: 1.92rem;
   text-decoration: none;
+}
+
+.gratuito-link-lista:hover, .gratuito-link-lista:active {
+  text-decoration: overline;
+}
+
+.gratuito-link-lista img {
+  width: 1.8rem;
 }
 
 /* Seção Diferenciais */
 .diferenciais-p {
-  font-size: 1.9rem;
+  font-size: 1.92rem;
 }
 
 .diferenciais-h3 {
@@ -207,7 +268,7 @@ nav ul {
 /* Seção Como ajudar */
 .comoajudar-lista,
 .comoajudar-paragrafo {
-  font-size: 1.9rem;
+  font-size: 1.92rem;
 }
 
 .comoajudar-lista a,
