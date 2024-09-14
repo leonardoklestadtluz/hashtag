@@ -83,6 +83,19 @@ strong {
   font-weight: 600;
 }
 
+h3 {
+  font-size: 2.3;
+  line-height: 1.2;
+}
+
+.hero-paragrafo,
+.comoajudar-lista,
+.comoajudar-paragrafo,
+.diferenciais-p {
+  font-size: 1.92rem;
+  line-height: 1.3;
+}
+
 /* Cabeçalho */
 .cabecalho {
   background: rgba(255, 255, 255, 0.973);
@@ -115,11 +128,6 @@ nav {display: none;}
 }
 
 /* Seção Hero */
-.hero-paragrafo {
-  font-size: 1.92rem;
-  line-height: 1.3rem;
-}
-
 .iframe-video {
   display: none; /* TEMPORÁRIO */
   aspect-ratio: 16/9;
@@ -241,18 +249,47 @@ nav {display: none;}
   padding: 4.88rem;
 }
 
-.diferenciais-p {
-  font-size: 1.92rem;
+.caixa-itens-diferenciais {
+  background-color: white;
+  border-radius: 2.5rem;
+  box-shadow: 0 0 0.8rem 0.3rem rgba(0, 0, 0, 0.15);
+  padding: 3.12rem 2.5rem;
+  position: relative;
+}
+
+.caixa-imagem-diferenciais {
+  background-color: #ffaf00;
+  border-radius: 2rem;
+  box-shadow: inset 0 0 0.8rem 0.3rem rgba(0, 0, 0, 0.15);
+  display: inline-block;
+  height: 10rem;
+  width: 10rem;
+  padding: 1.5rem;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.caixa-imagem-diferenciais img {
+  width: 100%;
+}
+
+.diferenciais-empresas img {
+  height: 5rem;
+  filter: grayscale(100%);
+}
+
+.opacidade {
+  opacity: 50%;
 }
 
 .diferenciais-h3 {
   color: #005e88;
-  font-size: 2.4rem;
   font-weight: 600;
 }
 
 .diferenciais-h3-empresas {
-  font-size: 3.5rem;
   font-weight: 400;
 }
 
@@ -291,11 +328,6 @@ nav {display: none;}
 }
 
 /* Seção Como ajudar */
-.comoajudar-lista,
-.comoajudar-paragrafo {
-  font-size: 1.92rem;
-}
-
 .comoajudar-lista a,
 .comoajudar-paragrafo a {
   color: #008ff7;
