@@ -300,6 +300,33 @@ nav {display: none;}
 }
 
 /* Seção O que falam */
+.secao-oquefalam {
+  background-image: linear-gradient(45deg, rgba(255, 255, 0, 0.767), rgba(49, 73, 209, 0.767), rgba(0, 128, 0, 0.767), rgba(255, 166, 0, 0.767));
+}
+
+.oquefalam-titulo {
+  color: white;
+}
+
+.oquefalam-carrossel-img {
+  background-position: 50%;
+  background-size: cover;
+  border-radius: 2.5rem;
+  aspect-ratio: 16/9;
+  width: 30rem;
+}
+
+.oquefalam-carrossel-img--1 {
+  background-image: url("https://i3.ytimg.com/vi/N_EZD04zmrw/hqdefault.jpg");
+}
+
+.oquefalam-carrossel-img--2 {
+  background-image: url("https://i3.ytimg.com/vi/auqWeBJLJHY/hqdefault.jpg");
+}
+
+.oquefalam-carrossel-img--3 {
+  background-image: url("https://i3.ytimg.com/vi/FD79IpCaM1Y/hqdefault.jpg");
+}
 
 /* .oquefalam-realce {
   font-weight: 600;
