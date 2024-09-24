@@ -308,12 +308,19 @@ nav {display: none;}
   color: white;
 }
 
+
+.oquefalam-carrossel {
+  position: relative;
+}
+
 .oquefalam-carrossel-img {
+  aspect-ratio: 16/9;
   background-position: 50%;
   background-size: cover;
   border-radius: 2.5rem;
-  aspect-ratio: 16/9;
-  width: 30rem;
+  display: inline-block;
+  width: 33%;
+  position: relative;
 }
 
 .oquefalam-carrossel-img--1 {
@@ -326,6 +333,28 @@ nav {display: none;}
 
 .oquefalam-carrossel-img--3 {
   background-image: url("https://i3.ytimg.com/vi/FD79IpCaM1Y/hqdefault.jpg");
+}
+
+.oquefalam-seta {
+  position: absolute;
+  top: 50%;
+}
+
+.seta-esquerda {
+  left: 0;
+  transform: translate(-150%, -60%);
+}
+
+.seta-direita {
+  right: 0;
+  transform: translate(150%, -60%);
+}
+
+.seta-player {
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  width: 3rem;
 }
 
 /* .oquefalam-realce {
