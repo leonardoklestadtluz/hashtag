@@ -2428,15 +2428,72 @@ WITH cte AS (
 )
 
 SELECT * FROM cte
-*/
 
 -- 15. Calculando agregações com CTE
 
+-- CTE: Calculando agregações
+-- Crie uma CTE que seja o resultado do agrupamento de total de produtos por marca. Faça uma média de produtos por marca.
 
+WITH cte AS (
+SELECT 
+	BrandName,
+	COUNT(*) AS 'Total'
+FROM
+	DimProduct
+GROUP BY
+	BrandName
+)
 
+--SELECT * FROM cte
 
+SELECT AVG(Total) FROM cte
 
+-- 16. Nomeando colunas de uma CTE
+WITH CTE(Marca, Total) AS (
+SELECT
+	BrandName,
+	COUNT(*)
+FROM
+	DimProduct
+GROUP BY
+	BrandName
+)
 
+SELECT Marca, Total FROM CTE
+*/
 
+--17. Criando múltiplas CTE's
 
+-- CTE: Criando múltiplas CTE's
 
+--Crie duas CTE's:
+-- 1. A primeira, chamada produtos_contoso, deve conter as seguintews colunas (DimProduct): ProductKey, ProductName, BrandName.
+-- 2. A segunda, chamada vendas_top100, deve ser um top 100 vendas masi recentes, considerando as seguintes colunasa (FactSales): SalesKey, ProductKey, DateKey, SalesQuantity
+
+-- Por fim, faça um INNER JOIN dessas tabelas
+
+WITH produtos_contoso AS (
+SELECT
+	ProductKey,
+	ProductName,
+	BrandName
+FROM
+	DimProduct
+WHERE
+	BrandName = 'Contoso'
+),
+vendas_top100 AS (
+SELECT TOP(100)
+	SalesKey,
+	ProductKey,
+	DateKey,
+	SalesQuantity
+FROM
+	FactSales
+ORDER BY
+	DateKey  DESC
+)
+
+SELECT * FROM vendas_top100
+INNER JOIN produtos_contoso
+ON vendas_top100.ProductKey = produtos_contoso.ProductKey
