@@ -2257,7 +2257,6 @@ FROM
 	FUNCIONARIOS 
 WHERE 
 	IDADE < ALL (SELECT IDADE FROM FUNCIONARIOS WHERE SEXO = 'M')
-*/
 
 -- EXISTS
 -- Retornar uma tabela com todos os produtos (id produto, nome produto) que possuem alguma venda no dia 01/01/2007
@@ -2282,6 +2281,156 @@ WHERE EXISTS(
 			FactSales.ProductKey = DimProduct.ProductKey
       )
 
+
+-- 9. Subquery na prática - Aplicação com o SELECT
+
+-- Subqueries: SELECT
+
+-- Retornar uma tabela com todos os produtos (ID Produto e Nome Produto)e também o total de vendas para cada produto
+
+SELECT 
+	ProductKey, 
+	ProductName,
+	(
+		SELECT 
+			COUNT(ProductKey) 
+		FROM 
+			FactSales
+		WHERE 
+			FactSales.ProductKey = DimProduct.ProductKey
+	) AS 'Qtd. Vendas'
+FROM 
+	DimProduct
+
+
+-- 10. Subquery na prática - Aplicação com o FROM
+
+-- Subqueries: FROM
+-- Retornar a quantidade totalde produtos da marca Contoso
+
+SELECT 
+	COUNT(*) 
+FROM 
+	DimProduct 
+WHERE 
+	BrandName = 'Contoso'
+
+SELECT 
+	COUNT(*) 
+FROM 
+	(
+		SELECT 
+			* 
+		FROM 
+			DimProduct 
+		WHERE 
+			BrandName = 'Contoso'
+	) AS T
+
+-- 11. Plano de Execução Estimado
+
+SELECT 
+	COUNT(*) 
+FROM 
+	DimProduct 
+WHERE 
+	BrandName = 'Contoso'
+
+SELECT 
+	COUNT(*) 
+FROM 
+	(
+		SELECT 
+			* 
+		FROM 
+			DimProduct 
+		WHERE 
+			BrandName = 'Contoso'
+	) AS T
+
+-- 12. Subquery aninhada (Parte 1)
+
+-- Subqueries aninhadas
+-- Descubra o nome dos clientes que ganham o segundo maior salário
+
+SELECT 
+	*
+FROM
+	DimCustomer
+WHERE 
+	CustomerType = 'Person'
+ORDER BY
+	YearlyIncome DESC
+
+SELECT DISTINCT TOP(2) YearlyIncome 
+FROM DimCustomer 
+WHERE CustomerType = 'Person' 
+ORDER BY YearlyIncome DESC
+
+SELECT CustomerKey, FirstName, LastName, YearlyIncome
+FROM DimCustomer
+WHERE YearlyIncome = 160000
+
+-- ETAPAS
+
+-- 1. Descobrir qual o maior salário
+-- 2. Descobrir qual o segundo maior salário
+-- 3. Descobrir o nome dos clientes que ganham o segundo maior salário
+
+-- 13. Subquery aninhada (Parte 2)
+
+SELECT CustomerKey, FirstName, LastName, YearlyIncome
+FROM DimCustomer
+WHERE YearlyIncome = 160000
+
+-- Descubra os nomes dos clientes que ganham o segundo maior salário
+
+SELECT 
+	CustomerKey, 
+	FirstName, 
+	LastName, 
+	YearlyIncome
+FROM 
+	DimCustomer
+WHERE 
+	YearlyIncome = (
+		SELECT 
+			MAX(YearlyIncome)
+		FROM 
+			DimCustomer
+		WHERE 
+			YearlyIncome < (
+				SELECT 
+					MAX(YearlyIncome)
+				FROM 
+					DimCustomer
+				WHERE 
+					CustomerType = 'Person'
+	)
+)
+
+-- 14. CTE - O que é e como criar
+
+-- CTE: Common Table Expression
+-- Crie uma CTE para armazenar o resultado de uma consulta que contenha: ProductKey, ProductName, BrandName, ColorName e UnitePrice, apenas para a marca Contoso
+
+WITH cte AS (
+	SELECT
+		ProductKey,
+		ProductName,
+		BrandName,
+		ColorName,
+		UnitPrice
+	FROM
+		DimProduct
+	WHERE
+		BrandName = 'Contoso'
+)
+
+SELECT * FROM cte
+*/
+
+-- 15. Calculando agregações com CTE
 
 
 
