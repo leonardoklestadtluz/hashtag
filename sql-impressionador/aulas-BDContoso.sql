@@ -2306,7 +2306,7 @@ FROM
 -- 10. Subquery na prática - Aplicação com o FROM
 
 -- Subqueries: FROM
--- Retornar a quantidade totalde produtos da marca Contoso
+-- Retornar a quantidade total de produtos da marca Contoso
 
 SELECT 
 	COUNT(*) 
