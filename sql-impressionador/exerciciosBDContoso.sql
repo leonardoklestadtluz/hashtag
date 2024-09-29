@@ -3860,13 +3860,16 @@ select avg(YearlyIncome) as 'Média Salarial Anual' from DimCustomer where Custom
 
 -- 57305.7779
 
-select CustomerKey, FirstName, LastName, EmailAddress, YearlyIncome from DimCustomer where YearlyIncome > (select avg(YearlyIncome) as 'Média Salarial Anual' from DimCustomer where CustomerType = 'person') order by YearlyIncome
+select CustomerKey, FirstName, LastName, EmailAddress, YearlyIncome from DimCustomer where YearlyIncome > (select avg(YearlyIncome) as 'Média Salarial Anual' from DimCustomer where CustomerType = 'person') and CustomerType = 'person' order by YearlyIncome
 
 
+/*	5. A ação de desconto da Asian Holiday Promotion foi uma das mais bem sucedidas da empresa.
+Agora, a Contoso quer entender um pouco melhor sobre o perfil dos clientes que compraram produtos com essa promoção.
+
+Seu trabalho é criar uma query que retorne a lista de clientes que compraram nessa promoção.*/
 
 
-
-
+select * from DimCustomer where CustomerKey in (select CustomerKey from FactOnlineSales where PromotionKey in (select PromotionKey from DimPromotion where PromotionName = 'Asian Holiday Promotion'))
 
 
 
