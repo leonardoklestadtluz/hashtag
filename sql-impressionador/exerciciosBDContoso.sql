@@ -3871,19 +3871,59 @@ Seu trabalho é criar uma query que retorne a lista de clientes que compraram nes
 
 select * from DimCustomer where CustomerKey in (select CustomerKey from FactOnlineSales where PromotionKey in (select PromotionKey from DimPromotion where PromotionName = 'Asian Holiday Promotion'))
 
+/*	6. A empresa implementou um programa de fidelização de clientes empresariais. Todos aqueles
+que comprarem mais de 3000 unidades de um mesmo produto receberá descontos em outras compras.
+
+Você deverá descobrir as informações de CustomerKey e CompanyName destes clientes*/
+
+select CustomerKey, CompanyName from DimCustomer where CustomerKey in (select CustomerKey from FactOnlineSales group by CustomerKey , PromotionKey having count(*) >= 3000)
+
+/*	7. Você deverá criar uma consulta para o setor de vendas que mostre as seguintes colunas da
+tabela DimProduct:
+
+ProductKey,
+ProductName,
+BrandName,
+UnitPrice
+Média de UnitPrice.*/
+
+select ProductKey, ProductName, BrandName, UnitPrice, (select avg(UnitPrice) from DimProduct)  as 'Média de Preço Unitário' from DimProduct
+
+/*	8. Faça uma consulta para descobrir os seguintes indicadores dos seus produtos:
+
+Maior quantidade de produtos por marca
+Menor quantidade de produtos por marca
+Média de produtos por marca*/
+
+select max(Quantidade) as 'Máximo', min(Quantidade) as 'Mínimo', avg(Quantidade) as 'Média' from (select BrandName, count(*) as 'Quantidade' from DimProduct group by BrandName) as t
+
+
+/*	9. Crie uma CTE que seja o agrupamento da tabela DimProduct, armazenando o total de
+produtos por marca. Em seguida, faça um SELECT nesta CTE, descobrindo qual é a quantidade
+máxima de produtos para uma marca. Chame esta CTE de CTE_QtdProdutosPorMarca.*/
+
+with CTE_QtdProdutosPorMarca as (select BrandName, count(*) as 'Quantidade' from DimProduct group by BrandName) 
+
+select max(Quantidade) from CTE_QtdProdutosPorMarca
+
+
+/*	10. Crie duas CTEs:
+(i) a primeira deve conter as colunas ProductKey, ProductName, ProductSubcategoryKey,
+BrandName e UnitPrice, da tabela DimProduct, mas apenas os produtos da marca Adventure
+Works. Chame essa CTE de CTE_ProdutosAdventureWorks.
+
+(ii) a segunda deve conter as colunas ProductSubcategoryKey, ProductSubcategoryName, da
+tabela DimProductSubcategory mas apenas para as subcategorias ‘Televisions’ e ‘Monitors’.
+Chame essa CTE de CTE_CategoriaTelevisionsERadio.
+
+Faça um Join entre essas duas CTEs, e o resultado deve ser uma query contendo todas as colunas
+das duas tabelas. Observe nesse exemplo a diferença entre o LEFT JOIN e o INNER JOIN.*/
+
+
+with CTE_ProdutosAdventureWorks as(select ProductKey, ProductName, ProductSubcategoryKey, BrandName, UnitPrice from DimProduct where BrandName = 'Adventure Works'), CTE_CategoriaTelevisionsERadio as(select ProductSubcategoryKey, ProductSubcategoryName from DimProductSubcategory where ProductSubcategoryName in ('Televisions', 'Monitors'))
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+select * from CTE_CategoriaTelevisionsERadio
+select * from CTE_ProdutosAdventureWorks
