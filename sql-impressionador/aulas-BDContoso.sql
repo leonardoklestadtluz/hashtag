@@ -2460,7 +2460,6 @@ GROUP BY
 )
 
 SELECT Marca, Total FROM CTE
-*/
 
 --17. Criando múltiplas CTE's
 
@@ -2497,3 +2496,51 @@ ORDER BY
 SELECT * FROM vendas_top100
 INNER JOIN produtos_contoso
 ON vendas_top100.ProductKey = produtos_contoso.ProductKey
+
+-- 16. [SQL Server] Loops no SQL
+
+
+-- 2. WHILE - Estrutura básica
+
+-- Loop while
+-- Crie um contador que faça uma contagem de 1 a 10 utilizando a estrutura de repetição WHILE
+
+
+declare @varContador int
+set @varContador = 0
+
+while @varContador <= 10
+begin
+	print 'O valor do contador é: ' + convert(varchar, @varContador)
+	set @varContador = @varContador + 1
+end
+
+-- 3. WHILE - Cuidado com loops infinitos
+
+declare @varContador int
+set @varContador = 0
+
+while @varContador <= 5
+begin
+	print 'O valor do contador é: ' + convert(varchar, @varContador)
+	set @varContador = @varContador + 1
+end
+
+-- Loop While: BREAK
+-- Faça um contador de 1 a 100. OBS: se o valor do contador for igual a 15, então o loop while deve ser encerrado.
+
+declare @varContador int
+set @varContador = 1
+
+while @varContador <= 100
+begin
+	if @varContador = 15
+	break
+	print 'O valor do contador é: ' + convert(varchar, @varContador)
+	--set @varContador = @varContador + 1
+	-- ou
+	set @varContador += 1
+end
+*/
+
+

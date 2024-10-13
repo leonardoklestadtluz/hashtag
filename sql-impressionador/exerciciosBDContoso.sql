@@ -3925,5 +3925,4 @@ with CTE_ProdutosAdventureWorks as(select ProductKey, ProductName, ProductSubcat
 
 
 
-select * from CTE_CategoriaTelevisionsERadio
-select * from CTE_ProdutosAdventureWorks
+select CTE_ProdutosAdventureWorks, *, CTE_CategoriaTelevisionsERadio,ProductSubcategoryName from CTE_ProdutosAdventureWorks left join CTE_CategoriaTelevisionsERadio on CTE_ProdutosAdventureWorks.ProductSubcategoryKey = CTE_CategoriaTelevisionsERadio.ProductSubcategoryKey
