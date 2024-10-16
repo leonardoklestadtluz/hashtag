@@ -2544,3 +2544,21 @@ end
 */
 
 
+-- 5. CONTINUE - Pulando repetições em um loop
+
+-- Loop While: CONTINUE
+-- Faça um contador de 1 a 10. OBS: os números 3 e 6 não podem ser printados
+
+declare @varContador int
+set @varContador = 0
+
+while @varContador < 10
+begin
+	set @varContador += 1
+	if @varContador = 3 or @varContador = 6
+	continue
+	print 'O valor da variável é: ' + convert(varchar, @varContador)
+end
+
+
+

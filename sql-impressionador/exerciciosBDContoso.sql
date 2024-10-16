@@ -3805,7 +3805,6 @@ SELECT * FROM vw_6a
 -- c) Exclua a View vw_6a.
 
 DROP VIEW vw_6a
-*/
 
 
 -- 15. [SQL Server] Subqueries e CTE's
@@ -3926,3 +3925,57 @@ with CTE_ProdutosAdventureWorks as(select ProductKey, ProductName, ProductSubcat
 
 
 select CTE_ProdutosAdventureWorks, *, CTE_CategoriaTelevisionsERadio,ProductSubcategoryName from CTE_ProdutosAdventureWorks left join CTE_CategoriaTelevisionsERadio on CTE_ProdutosAdventureWorks.ProductSubcategoryKey = CTE_CategoriaTelevisionsERadio.ProductSubcategoryKey
+*/
+
+
+-- 16. [SQL Server] Loops no SQL
+
+/*	1. Utilize o Loop While para criar um contador que comece em um valor inicial @ValorInicial e termine em um valor final @ValorFinal. Você deverá printar na tela a seguinte frase:
+
+“O valor do contador é: “ + ___*/
+
+declare @valorInicial int
+declare @valorFinal int
+set @valorInicial = 1
+set @valorFinal = 100
+
+while @valorInicial <= @valorFinal
+begin
+	print 'O valor do contador é: ' + convert(varchar, @valorInicial)
+	set @valorInicial += 1
+end
+
+/*	2. Você deverá criar uma estrutura de repetição que printe na tela a quantidade de contratações para cada ano, desde 1996 até 2003. A informação de data de contratação encontra-se na coluna HireDate da tabela DimEmployee. Utilize o formato:
+X contratações em 1996
+Y contratações em 1997
+Z contratações em 1998
+...
+...
+N contratações em 2003
+Obs: a coluna HireDate contém a data completa (dd/mm/aaaa). Lembrando que você deverá printar a quantidade de contratações por ano.*/
+declare @anoInicial int = 1996
+declare @anoFinal int = 2003
+
+while @anoInicial <= @anoFinal
+begin
+	declare @qtdFuncionarios int = (select count(*) from DimEmployee where year(HireDate) = @anoInicial)
+	print concat(@qtdFuncionarios, ' contratações em: ', @anoInicial)
+	set @anoInicial += 1
+end
+
+/*	3. Utilize um Loop While para criar uma tabela chamada Calendario, contendo uma coluna que comece com a data 01/01/2021 e vá até 31/12/2021.*/
+
+create table Calendario (Data date)
+
+declare @dataInicio date = '01/01/2021'
+declare @dataFim date = '31/12/2021'
+
+while @dataInicio <= @dataFim
+begin
+	insert into Calendario (Data) values(@dataInicio)
+	set @dataInicio = dateadd(day, 1, @dataInicio)
+end
+
+select * from Calendario
+
+
