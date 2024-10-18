@@ -64,7 +64,6 @@ sum(Qtd_Vendida) over(partition by Regiao) as 'Total Vendido',
 format(Qtd_Vendida / sum(Qtd_Vendida) over(partition by Regiao), '0.00%') as '% por Região'
 from Lojas 
 order by ID_Loja
-*/
 
 -- 6. Funções de Classificação - ROW_NUMBER, RANK, DENSE_RANK, NTILE
 
@@ -82,16 +81,50 @@ dense_rank() over(order by Qtd_Vendida desc) as 'denserank',
 ntile(4) over(order by Qtd_Vendida desc) as 'ntile'
 from Lojas
 
+-- 7. Funções de Classificação mais PARTITION BY
+
+select
+ID_Loja,
+Nome_Loja,
+Regiao,
+Qtd_Vendida,
+row_number() over(partition by Regiao order by Qtd_Vendida desc) as 'rownumber',
+rank() over(partition by Regiao order by Qtd_Vendida desc) as 'rank',
+dense_rank() over(partition by Regiao order by Qtd_Vendida desc) as 'denserank',
+ntile(4) over(partition by Regiao order by Qtd_Vendida desc) as 'ntile'
+from Lojas
+order by ID_Loja
 
 
+-- 8. RANK mais GROUP BY
+
+--Crie uma tabela com o total de vendas por região e adicione uma coluna de ranking a esta tabela
+
+select Regiao as 'Região', sum(Qtd_Vendida) as 'Total Vendido', rank() over(order by sum(Qtd_Vendida) desc) as 'Ranking' from Lojas group by Regiao order by [Total Vendido] desc
+
+*/
+
+-- 9. Cálculo de soma móvel e média móvel
+
+create table Resultado(data_fechamento datetime, mes_ano varchar(100), faturamento_mm float)
+
+insert into Resultado(data_fechamento, mes_ano, faturamento_mm)
+values
+	('01/01/2020', 'JAN-20', 8),
+	('01/02/2020', 'FEV-20', 10),
+	('01/03/2020', 'MAR-20', 6),
+	('01/04/2020', 'ABR-20', 9),
+	('01/05/2020', 'MAI-20', 5),
+	('01/06/2020', 'JUN-20', 4),
+	('01/07/2020', 'JUL-20', 7),
+	('01/08/2020', 'AGO-20', 11),
+	('01/09/2020', 'SET-20', 9),
+	('01/10/2020', 'OUT-20', 12),
+	('01/11/2020', 'NOV-20', 11),
+	('01/11/2020', 'DEZ-20', 10)
 
 
-
-
-
-
-
-
+select data_fechamento, mes_ano, faturamento_mm, sum(faturamento_mm) over(order by data_fechamento rows between 1 preceding and current row) as 'Soma Móvel', avg(faturamento_mm) over(order by data_fechamento rows between 1 preceding and current row) as 'Média Móvel' from Resultado
 
 
 
