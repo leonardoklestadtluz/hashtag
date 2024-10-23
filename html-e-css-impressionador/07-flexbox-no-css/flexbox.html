@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox</title>
+  </head>
+  <body>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 62.5%;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.6rem;
+        line-height: 1.4;
+        color: #404040;
+      }
+
+      h1 {
+        font-size: 3.32rem;
+      }
+
+      h2 {
+        font-size: 2.76rem;
+      }
+
+      main {
+        display: flex;
+        gap: 4rem;
+        flex-flow: row;
+        justify-content: center; /* Justify Content - Main Axis */
+        align-items: center; /* Align Items - Cross Axis */
+        /* flex-flow: flex-direction flex-wrap; */
+      }
+
+      section {
+        /* flex-basis: 0rem; */
+        /* flex-grow: 1; */
+        /* flex-shrink: 1; */
+        /* flex: 1; */
+        width: 40rem;
+
+        /* flex: flex-basis; unidade */
+        /* flex: flex-grow; fator/numero  */
+        /* flex: flex-grow flex-basis; */
+        /* flex: flex-grow flex-shrink flex-basis; */
+      }
+
+      section:first-child {
+        /* flex-basis: 60rem; */
+        /* flex-grow: 2; */
+        /* flex: 2; */
+        /* flex: 2 1 0rem; */
+        background-color: rgb(255, 181, 181);
+      }
+
+      /* section:nth-child(2) {
+        flex-shrink: 2;
+      } */
+
+      section:last-child {
+        background-color: rgb(181, 196, 255);
+      }
+
+      .segunda-secao {
+        background-color: rgb(192, 255, 181);
+        order: -1;
+        align-self: flex-end;
+      }
+
+      .primeira-secao {
+        display: flex;
+        flex-flow: column;
+        gap: 2.5rem;
+        align-items: center;
+      }
+    </style>
+
+    <main>
+      <section class="primeira-secao">
+        <h1>Meu título</h1>
+        <h2>Meu subtítulo</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+          lobortis massa nibh, hendrerit consectetur mi consectetur in. Mauris
+          eget posuere ex. Proin tempor purus euismod auctor iaculis. Sed
+          efficitur vehicula leo nec auctor. Proin dignissim orci nunc, quis
+          dapibus purus convallis a. In hac habitasse platea dictumst. Vivamus
+          semper, nibh ac ullamcorper finibus, sem enim elementum dui, ac
+          dignissim lacus nisl nec risus. Interdum et malesuada fames ac ante
+          ipsum primis in faucibus. Aliquam tempus vestibulum mattis.
+          Suspendisse potenti. Sed vestibulum quis arcu ut tempus. Phasellus
+          ullamcorper scelerisque volutpat. Curabitur facilisis quam lectus,
+          vitae commodo mi consectetur sed. Duis eget lectus vulputate, rhoncus
+          mauris eu, vehicula mi. Quisque ac suscipit eros.
+        </p>
+      </section>
+
+      <section class="segunda-secao">
+        <h2>Segunda seção</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+          lobortis massa nibh, hendrerit consectetur mi consectetur in. Mauris
+          eget posuere ex. Proin tempor purus euismod auctor iaculis. Sed
+          efficitur vehicula leo nec auctor. Proin dignissim orci nunc, quis
+          dapibus purus convallis a. In hac habitasse platea dictumst. Vivamus
+          semper, nibh ac ullamcorper finibus, sem enim elementum dui, ac
+          dignissim lacus nisl nec risus. Interdum et malesuada fames ac ante
+          ipsum primis in faucibus. Aliquam tempus vestibulum mattis.
+          Suspendisse potenti. Sed vestibulum quis arcu ut tempus. Phasellus
+          ullamcorper scelerisque volutpat. Curabitur facilisis quam lectus,
+          vitae commodo mi consectetur sed. Duis eget lectus vulputate, rhoncus
+          mauris eu, vehicula mi. Quisque ac suscipit eros.
+        </p>
+      </section>
+
+      <section>
+        <h2>Meu subtítulo</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+          lobortis massa nibh, hendrerit consectetur mi consectetur in. Mauris
+          eget posuere ex. Proin tempor purus euismod auctor iaculis. Sed
+          efficitur vehicula leo nec auctor. Proin dignissim orci nunc, quis
+          dapibus purus convallis a. In hac habitasse platea dictumst. Vivamus
+          semper, nibh ac ullamcorper finibus, sem enim elementum dui, ac
+          dignissim lacus nisl nec risus. Interdum et malesuada fames ac ante
+          ipsum primis in faucibus. Aliquam tempus vestibulum mattis.
+          Suspendisse potenti. Sed vestibulum quis arcu ut tempus. Phasellus
+          ullamcorper scelerisque volutpat. Curabitur facilisis quam lectus,
+          vitae commodo mi consectetur sed. Duis eget lectus vulputate, rhoncus
+          mauris eu, vehicula mi. Quisque ac suscipit eros.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
