@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2. O que é e como usar Flexbox</title>
+  <title>6. Alinhamento e posicionamento dos elementos</title>
 </head>
 <body>
   <style>
@@ -28,18 +28,66 @@
 
     main {
       display: flex;
+      gap: 4rem;
+      flex-flow: row;
+      justify-content: center;
+      /* align-items: center; */
+      /* flex-flow: flex-direction flex-wrap; */
+    }
+
+    section {
+      color: beige;
+      /* flex-basis: 0rem;
+      flex-grow: 1;
+      flex-shrink: 2; */
+      /* flex: 1; */
+      width: 40rem
+
+      /* flex: flex-basis; unidade */
+      /* flex: flex-grow; fator/numero */
+      /* flex: flex-grow flex-basis */
+      /* flex: flex-grow flex-shrink flex-basis; */
+    }
+
+    section:first-child {
+      background-color: rgb(0, 0, 255);
+      /* flex-basis: 90rem; */
+      /* flex-grow: 2; */
+      /* flex: 2; */
+      /* flex: 2 1 0rem; */
+    }
+
+    /* section:nth-child(2) {
+      flex-shrink: 2;
+    } */
+    
+    section:last-child {
+      background-color: darkred;
+    }
+    
+    .segunda-secao {
+      background-color: green;
+      order: -1;
+      align-self: end;
+    }
+
+    .primeira-secao {
+      display: flex;
+      flex-flow: column;
+      gap: 4rem;
+      align-items: center;
     }
   </style>
 
   <main>
-    <section>
+    <section class="primeira-secao">
       <h1>Meu título</h1>
       <h2>Meu subtítulo</h2>
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur dolor blanditiis temporibus fugiat quibusdam atque similique voluptatibus suscipit deleniti non possimus, commodi quia magni et distinctio qui ex ad beatae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit eos similique excepturi quae dolorum consequatur aperiam rerum, explicabo obcaecati. Accusantium necessitatibus maxime sunt earum autem unde corporis alias. Aut, cumque. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis quae quos fuga possimus earum molestias soluta dolor voluptatibus adipisci, eaque consectetur, enim vitae quam modi. Itaque voluptatum fuga nisi sit.</p>
     </section>
     
-    <section>
-      <h2>Meu subtítulo</h2>
+    <section class="segunda-secao">
+      <h2>Segunda Seção</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure nemo sapiente soluta aut sed suscipit. Officiis quo labore ipsa veritatis officia sunt explicabo temporibus ad, natus voluptas vero quis animi? Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere hic saepe soluta cupiditate dicta quas quis sint doloribus asperiores natus eveniet mollitia consectetur, animi rem repellat sequi? Nam, harum et. Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima ratione architecto quos aperiam non, ipsum molestias blanditiis iusto eum earum modi laborum cumque assumenda nulla neque sunt minus error iure!</p>
     </section>
     

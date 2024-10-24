@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2. O que é e como usar Flexbox</title>
+  <title>4. Mudar a direção do Flexbox</title>
 </head>
 <body>
   <style>
@@ -28,6 +28,22 @@
 
     main {
       display: flex;
+      gap: 4rem;
+      flex-flow: row;
+      /* flex-flow: flex-direction flex-wrap; */
+    }
+
+    section {
+      background-color: rgb(0, 0, 255);
+      color: beige;
+    }
+
+    section:nth-child(2) {
+      background-color: green;
+    }
+
+    section:nth-child(3) {
+      background-color: darkred;
     }
   </style>
 
