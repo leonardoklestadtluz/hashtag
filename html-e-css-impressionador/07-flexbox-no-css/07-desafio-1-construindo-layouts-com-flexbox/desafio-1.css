@@ -1,14 +1,17 @@
+/* RESET */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+/* FONTE BASE */
 html {
   /* font-size: 10px; */
   font-size: 62.5%;
 }
 
+/* GLOBAL */
 body {
   font-family: "Montserrat", sans-serif;
   font-size: 1.8rem;
@@ -47,8 +50,74 @@ figcaption {
   margin-left: 3.2rem;
 }
 
-/* LVHA */
+/* CONTAINER */
+.container {
+  background-color: burlywood;
+  margin: 0 auto;
+  width: 96rem;
 
+  display: block;
+  gap: 10rem;
+}
+
+.container h1 {
+  text-align: center;
+}
+
+/* SEÇÕES */
+.secoes {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.secao {
+  background-color: beige;
+  border-radius: 8rem 1rem 8rem 1rem;
+  width: 88%;
+  margin: 0 auto;
+}
+
+.secao-01 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+}
+
+/* IMAGE TV SMART */
+.tv-smart {
+  width: 28rem;
+}
+
+figcaption {
+  text-align: center;
+}
+
+/* PREÇO E CONDIÇÕES */
+.preco-condicoes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.preco {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.preco-h2 {margin-bottom: 0.6rem;}
+
+.preco-desconto {margin-bottom: -0.1rem;}
+
+.condicoes {
+  width: 100%;
+}
+
+/* LVHA */
 a:link,
 a:visited {
   display: inline-block;
@@ -108,7 +177,7 @@ p strong {
   text-decoration: underline;
 }
 
-.div-condicoes {
+.condicoes {
   display: inline-block;
   background-color: #035276;
   color: #fff;
@@ -124,7 +193,7 @@ p strong {
 
 .img-wpp {
   position: fixed;
-  top: 1rem;
-  right: 1rem;
+  bottom: 5rem;
+  right: 3.8rem;
   width: 8.5rem;
 }
