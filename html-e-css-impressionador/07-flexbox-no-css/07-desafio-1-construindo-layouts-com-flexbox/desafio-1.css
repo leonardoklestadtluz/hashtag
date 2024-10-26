@@ -18,6 +18,10 @@ body {
   line-height: 1.4;
 }
 
+main {
+  background-color: #deb8873a;
+}
+
 h1 {
   font-size: 4.5rem;
   line-height: 1;
@@ -54,7 +58,7 @@ figcaption {
 .container {
   background-color: burlywood;
   margin: 0 auto;
-  width: 96rem;
+  width: 108rem;
 
   display: block;
   gap: 10rem;
@@ -82,7 +86,7 @@ figcaption {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5rem;
+  gap: 10rem;
 }
 
 /* IMAGE TV SMART */
@@ -115,6 +119,22 @@ figcaption {
 
 .condicoes {
   width: 100%;
+}
+
+/* SECAO 2 */
+.caracteristicas-h2 {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.caracteristicas {
+  display: flex;
+  justify-content: space-around;
+}
+
+.informacao {
+  display: flex;
+  flex-direction: column;
 }
 
 /* LVHA */
