@@ -1,7 +1,7 @@
 /* RESET */
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -71,7 +71,7 @@ figcaption {
 /* SEÇÕES */
 .secoes {
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
   gap: 4rem;
 }
 
@@ -91,7 +91,7 @@ figcaption {
 
 /* IMAGE TV SMART */
 .tv-smart {
-  width: 28rem;
+  width: 30rem;
 }
 
 figcaption {
@@ -101,7 +101,7 @@ figcaption {
 /* PREÇO E CONDIÇÕES */
 .preco-condicoes {
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
   gap: 2rem;
@@ -109,7 +109,7 @@ figcaption {
 
 .preco {
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
   align-items: start;
 }
 
@@ -130,11 +130,20 @@ figcaption {
 .caracteristicas {
   display: flex;
   justify-content: space-around;
+
 }
 
 .informacao {
+
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
+}
+
+ul {
+  display: flex;
+  flex-flow: column;
+  gap: 0.8rem;
+  /* list-style: none; */
 }
 
 /* LVHA */
@@ -154,23 +163,9 @@ a:active {
   color: #0588c4;
 }
 
-ul {
-  margin-bottom: 2.4rem;
-  margin-left: 2.4rem;
-}
-
 li {
-  margin-bottom: 0.6rem;
   color: #035276;
   font-style: italic;
-}
-
-p {
-  margin-bottom: 0.6rem;
-}
-
-hr {
-  display: none;
 }
 
 section {
@@ -216,4 +211,17 @@ p strong {
   bottom: 5rem;
   right: 3.8rem;
   width: 8.5rem;
+}
+
+/* RODAPÉ */
+footer {
+  background-color: #deb887;
+  padding: 2rem;
+  text-align: center;
+}
+
+.by {
+  color: #400440;
+  font-size: 2rem;
+  font-style: italic;
 }
