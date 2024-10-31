@@ -91,6 +91,7 @@ input::placeholder {
 }
 
 .botao {
+  text-align: center;
   display: inline-block;
   font-size: 2.4rem;
   font-weight: 700;
@@ -214,6 +215,12 @@ nav ul {
   background-size: cover;
 }
 
+.container-hero {
+  display: flex;
+  align-items: center;
+  gap: 3.12rem;
+}
+
 .hero-botao {
   background-image: linear-gradient(180deg, #ff645e, #ff9253);
 }
@@ -225,10 +232,22 @@ nav ul {
 }
 
 .iframe-video {
-  display: none;
   aspect-ratio: 16/9;
-  width: 42rem;
   border-radius: 2.5rem;
+  flex: 4;
+}
+
+.hero-coluna {
+  display: flex;
+  flex-flow: column;
+  gap: 2rem;
+  flex: 6;
+}
+
+.hero-botoes {
+  display: flex;
+  flex-flow: column;
+  gap:2rem;
 }
 
 /* Seção Conteúdos Gratuitos */
