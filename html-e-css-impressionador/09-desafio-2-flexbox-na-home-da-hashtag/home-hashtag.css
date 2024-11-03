@@ -30,8 +30,9 @@ body {
 
 h1 {
   font-size: 3.32rem;
-  line-height: 1;
   font-weight: 600;
+  letter-spacing: 0.4rem;
+  line-height: 1;
 }
 
 h2 {
@@ -377,6 +378,8 @@ nav ul {
 }
 
 .caixa-titulo-diferenciais {
+  display: flex;
+  gap: 4.88rem;
   border-top-left-radius: 5rem;
   border-top-right-radius: 5rem;
   padding: 4.88rem;
@@ -389,11 +392,22 @@ nav ul {
 }
 
 .caixa-itens-diferenciais {
+  display:flex;
+  flex-flow: column;
+  /* align-items: center; */
+  text-align: center;
+  gap:1.6rem;
   position: relative;
   border-radius: 2.5rem;
   background-color: white;
   box-shadow: 0 0 0.8rem 0.3rem rgba(0, 0, 0, 0.15);
-  padding: 3.12rem 2.5rem;
+  padding: 6.6rem 2.5rem;
+}
+
+.caixa-item-diferenciais {
+  display: flex;
+  flex-flow: column;
+  gap: 1.02rem;
 }
 
 .caixa-imagem-diferenciais {
@@ -431,7 +445,14 @@ nav ul {
 
 .caixa-diferenciais-h2 {
   border-left: solid 0.5rem #ffb20f;
+  flex: 5;
   padding: 0.52rem 0 0.52rem 1.6rem;
+}
+
+.diferenciais-p {
+  flex: 5;
+  margin-top: 0.52rem;
+  text-align: right;
 }
 
 .diferenciais-h3 {
