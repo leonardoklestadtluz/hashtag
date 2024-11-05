@@ -87,6 +87,7 @@ input::placeholder {
 
 .container-diferenciais,
 .container-blog {
+  max-width: 106rem;
   border-radius: 5rem;
   box-shadow: inset 0 0 0.8rem 0.3rem rgba(0, 0, 0, 0.15);
 }
@@ -383,17 +384,29 @@ nav ul {
   border-top-left-radius: 5rem;
   border-top-right-radius: 5rem;
   padding: 4.88rem;
+  padding-bottom: 12rem;
   background-image: linear-gradient(225deg, #196b9f, #1a82a7);
   color: white;
 }
 
 .caixa-restante-diferenciais {
-  padding: 4.88rem;
+  display: flex;
+  flex-flow: column;
+  gap: 4.88rem;
+  padding: 4.88rem 3.12rem;
+}
+
+.bloco-itens-diferenciais {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  margin-top: -10rem;
 }
 
 .caixa-itens-diferenciais {
   display:flex;
   flex-flow: column;
+  flex: 1;
   /* align-items: center; */
   text-align: center;
   gap:1.6rem;
@@ -428,8 +441,15 @@ nav ul {
   width: 100%;
 }
 
+.diferenciais-empresas {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 2rem;
+}
+
 .diferenciais-empresas img {
-  height: 5rem;
+  height: 3rem;
   filter: grayscale(100%);
 }
 
@@ -468,6 +488,14 @@ nav ul {
   color: #005e88;
   font-weight: 700;
   text-decoration: none;
+}
+
+.bloco-imagens-diferenciais {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 2.6rem;
+  padding: 0.10rem;
 }
 
 /* Seção O que falam */
