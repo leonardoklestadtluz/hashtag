@@ -499,7 +499,6 @@ nav ul {
 }
 
 /* Seção O que falam */
-
 .secao-oquefalam {
   background-image: url(https://www.hashtagtreinamentos.com/wp-content/uploads/2022/06/BACKGROUN-banner-04.png);
   background-position: 50%;
@@ -507,15 +506,37 @@ nav ul {
   background-size: cover;
 }
 
+.container-oquefalam {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 3.12rem;
+}
+
 .oquefalam-titulo {
   color: white;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
 }
 
 .oquefalam-carrossel {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  align-self: stretch;
+  gap: 2.5rem;
   position: relative;
 }
 
+.oquefalam-carrossel-imagens {
+  display: flex;
+  align-self: stretch;
+  gap: 2rem;
+}
+
 .oquefalam-carrossel-img {
+  flex: 1;
   background-color: #7489af;
   background-blend-mode: multiply;
   position: relative;
@@ -523,7 +544,6 @@ nav ul {
   background-position: 50%;
   background-size: cover;
   aspect-ratio: 16/9;
-  width: 33%;
   border-radius: 2.5rem;
 }
 
@@ -598,36 +618,60 @@ nav ul {
   background-size: cover;
 }
 
-.seta-namidia,
-.h2-namidia {
-  display: inline-block;
+.container-namidia {
+  display: flex;
+  justify-content: space-between;
+  gap: 3.12rem;
 }
+
+.namidia-links, .namidia-titulo {
+  display: flex;
+  align-items: center;
+}
+
+.namidia-links {gap: 2rem;}
+
+.namidia-titulo {gap: 1.02rem;}
+
 
 /* Seção Blog */
 
 .container-blog {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 2.5rem;
   position: relative;
   background-color: #f9f9f9;
   padding: 4.88rem;
+  padding-top: 7.63rem;
 }
 
 .caixa-blog-h2 {
+  top: -1rem;
   width: max-content;
   background-image: linear-gradient(90deg, #feb914, #f6a50b);
   padding: 1.02rem 3.12rem;
 }
 
 .caixa-postblog {
-  display: inline-block;
+  display: flex;
+  flex-flow: column;
+  gap: 1.28rem;
+  flex: 1 1 40%;
   border-radius: 2.5rem;
   box-shadow: inset 0 0 0.4rem 0.15rem rgba(0, 0, 0, 0.15);
   padding: 2rem;
-  width: 49%;
   background-color: #fff;
 }
 
 .caixa-postblog img {
   width: 100%;
+}
+
+.caixa-imgpostadoem {
+  display: flex;
+  flex-flow: column;
+  gap: 0.42rem;
 }
 
 .blog-postadoem {
@@ -665,6 +709,23 @@ nav ul {
   padding: 7.63rem 2rem;
 }
 
+.container-comoajudar, .container-comoajudar-2 {width: 86rem;}
+
+.container-comoajudar, .container-comoajudar-2 {
+  display: flex;
+  flex-flow: column;
+  
+}
+
+.container-comoajudar-2 {
+  gap: 1.6rem;
+}
+
+.container-comoajudar {
+  align-items: center;
+  gap: 3.12rem;
+}
+
 .caixa-comoajudar-h2 {
   display: inline-block;
   padding: 0.42rem 1.6rem;
@@ -675,6 +736,9 @@ nav ul {
 }
 
 .comoajudar-lista {
+  display: flex;
+  flex-flow: column;
+  gap: 1.28rem;
   border-radius: 2.5rem;
   box-shadow: inset 0 0 0.8rem 0.15rem rgba(0, 0, 0, 0.15);
   padding: 2.5rem;
@@ -694,6 +758,16 @@ nav ul {
 .comoajudar-paragrafo a:hover,
 .comoajudar-paragrafo a:active {
   color: #0056b3;
+}
+
+.comoajudar-lista li {
+  display: flex;
+  align-items: start;
+  gap: 0.82rem;
+}
+
+.comoajudar-lista li img {
+  transform: translateY(30%);
 }
 
 .comoajudar-paragrafo b {
