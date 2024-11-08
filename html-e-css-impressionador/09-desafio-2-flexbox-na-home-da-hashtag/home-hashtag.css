@@ -714,7 +714,7 @@ nav ul {
 .container-comoajudar, .container-comoajudar-2 {
   display: flex;
   flex-flow: column;
-  
+  gap: 4.8rem;
 }
 
 .container-comoajudar-2 {
@@ -781,6 +781,32 @@ nav ul {
   color: white;
 }
 
+.container-minicurso {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.form-minicurso {
+  display: flex;
+  align-self: stretch;
+  margin-top: 3rem;
+  justify-content: space-between;
+  align-items: end;
+  gap: 2rem;
+}
+
+.form div {
+  display: flex;
+  flex-flow: column;
+  gap: 1rem;
+}
+
+.form div label {
+  margin-left: 0.1rem;
+}
+
 .botao-minicurso {
   background-color: #ffba29;
   border-bottom-color: #664a10;
@@ -797,6 +823,41 @@ nav ul {
   width: 18rem;
 }
 
+.container-rodape {
+  display: flex;
+  align-items: start;
+}
+
+.subscao-rodape, 
+.subsecao-cursosonline, 
+.rodape-div-iconelink, 
+.subsecao-assistente,
+.rodape-coluna {
+  display: flex;
+  flex-flow: column;
+}
+
+.rodape-coluna {gap: 2.5rem;}
+
+.subscao-rodape {gap: 2rem;}
+
+.subsecao-cursosonline {gap: 1.28rem;}
+
+.subsecao-assistente {gap: 1.02rem;}
+
+.rodape-div-iconelink {gap: 0.65rem;}
+
+.rodape-iconelink {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.rodape-redessociais {
+  display: flex;
+  gap: 0.82rem;
+}
+
 .rodape-titulo,
 .rodape-subtitulo,
 .rodape-seg-subtitulo {
@@ -809,6 +870,11 @@ nav ul {
 
 .rodape svg {
   width: 2.4rem;
+}
+
+.link-redessociais svg {
+  fill: #404040;
+  stroke: #404040;
 }
 
 .link-redessociais:hover svg {
@@ -828,7 +894,18 @@ nav ul {
   color: #f60;
 }
 
+.form {
+  background-image: linear-gradient(82deg, rgba(0, 128, 0, 0.589), rgba(0, 0, 255, 0.856), rgba(255, 0, 0, 0.795));
+  color: white;
+  margin: 0 auto;
+  width: 30%;
+}
+
 .form-newsletter {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 2.28rem;
   border-radius: 2.5rem;
   box-shadow: inset 0 0 0.8rem 0.15rem rgba(0, 0, 0, 0.15);
   padding: 2.5rem;
@@ -845,6 +922,7 @@ nav ul {
   border: solid 0.2rem #1a77a4;
 }
 
+.copy-right {text-align: center;}
 /* Fixado */
 
 .logo-whatsapp {
