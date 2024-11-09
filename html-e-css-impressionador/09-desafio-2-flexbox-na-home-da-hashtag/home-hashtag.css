@@ -819,13 +819,20 @@ nav ul {
 
 /* Rodapé */
 
+.secao-rodape {
+  background-image: linear-gradient(rgb(29, 29, 29), rgb(2, 0, 0), rgb(0, 0, 0));
+  padding: 8rem 0 4rem 0;
+}
+
 .logo-footer {
   width: 18rem;
 }
 
 .container-rodape {
+  width: 106rem;
   display: flex;
   align-items: start;
+  gap: 4.88rem;
 }
 
 .subscao-rodape, 
@@ -837,9 +844,9 @@ nav ul {
   flex-flow: column;
 }
 
-.rodape-coluna {gap: 2.5rem;}
+.rodape-coluna {gap: 3.12rem;}
 
-.subscao-rodape {gap: 2rem;}
+.subscao-rodape {gap: 1.6rem;}
 
 .subsecao-cursosonline {gap: 1.28rem;}
 
@@ -894,22 +901,16 @@ nav ul {
   color: #f60;
 }
 
-.form {
-  background-image: linear-gradient(82deg, rgba(0, 128, 0, 0.589), rgba(0, 0, 255, 0.856), rgba(255, 0, 0, 0.795));
-  color: white;
-  margin: 0 auto;
-  width: 30%;
-}
-
 .form-newsletter {
+  background-image: radial-gradient(rgb(26, 25, 25), rgb(2, 0, 0), rgb(0, 0, 0));
+  box-shadow: 0rem 1rem 6rem -2rem rgb(233, 227, 227);
+  border-radius: 2.5rem;
+  padding: 2.5rem;
+
   display: flex;
   flex-flow: column;
   align-items: center;
   gap: 2.28rem;
-  border-radius: 2.5rem;
-  box-shadow: inset 0 0 0.8rem 0.15rem rgba(0, 0, 0, 0.15);
-  padding: 2.5rem;
-  background-color: #fff;
 }
 
 .botao-newsletter {
@@ -922,7 +923,13 @@ nav ul {
   border: solid 0.2rem #1a77a4;
 }
 
+hr {
+  margin: 5rem auto;
+  width: 30%;
+}
+
 .copy-right {text-align: center;}
+
 /* Fixado */
 
 .logo-whatsapp {
