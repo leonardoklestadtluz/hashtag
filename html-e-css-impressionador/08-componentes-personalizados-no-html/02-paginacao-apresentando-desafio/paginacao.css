@@ -1,0 +1,75 @@
+/* GLOBAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {font-size: 62.5%;}
+
+body {
+  color: #303030;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.6rem;
+  line-height: 1.4;
+}
+
+/* PAGINAÇÃO */
+.paginacao {
+  display: flex;
+  gap: 3rem;
+  padding: 6.1rem;
+
+  .paginacao-botao {
+    background-color: green;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    font-size: 4rem;
+    font-weight: 800;
+    height: 4.5rem;
+    width: 4.5rem;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    &:hover {
+    background-color: white;
+    border: 2px solid green;
+    color: rgb(3, 27, 3);
+    }
+  }
+
+  .paginacao-link {
+    color: inherit;
+    font-size: 3.2rem;
+    text-decoration: none;
+    height: 4.5rem;
+    width: 4.5rem;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    &:hover {
+      background-color: rgb(4, 83, 40);
+    border-radius: 50%;
+    color: white;
+    font-weight: 800;
+    padding: 0.5rem;
+    height: 4.5rem;
+    width: 4.5rem;
+    }
+  }
+  
+  .paginacao-link.link-ativo {
+    background-color: rgb(4, 83, 40);
+    border-radius: 50%;
+    color: white;
+  }
+}
+
+
+
