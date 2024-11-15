@@ -1,0 +1,96 @@
+/* GLOBAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {font-size: 62.5%;}
+
+body {
+  background-color: rgb(34, 19, 19);
+  color: #a87979;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.4;
+}
+
+/* POPUP */
+section {
+  padding: 6.1rem;
+
+  display: flex;
+  flex-flow: column;
+  gap: 2rem;
+}
+
+.popup {
+  background-color: rgba(77, 50, 50, 0.822);
+  backdrop-filter: blur(2.5px);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & .container {
+    background-color: #3d1717;
+    border-radius: 3.12rem;
+    box-shadow: inset 0 0 0.8rem 0.2rem rgba(231, 206, 206, 0.767);
+    padding: 3.12rem;
+    width: 50rem;
+
+    display: flex;
+    flex-flow: column;
+    gap: 3rem;
+
+    & .titulo {
+      color: rgba(245, 117, 78, 0.829);
+      font-size: 2.76rem;
+      font-weight: 900;
+      line-height: 1.5;
+      text-align: center;
+
+      & .realce {
+        background-color: #a879798a;
+        border-radius: 2rem;
+        padding: 0 1rem;
+      }
+    }
+
+    & .textos {
+      display: flex;
+      flex-flow: column;
+      gap: 1.6rem;
+
+      & b {
+        color: rgba(245, 117, 78, 0.829);
+      }
+    }
+
+    & .botao {
+      &:link,
+      &:visited {
+        align-self: center;
+        background-color: #a879798a;
+        border-radius: 2.5rem;
+        color: rgba(245, 117, 78, 0.829);
+        font-size: 2rem;
+        font-weight: 900;
+        letter-spacing: 0.3rem;
+        padding: 1rem 3rem;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      &:hover,
+      &:active {
+        box-shadow: inset 0 0 0.8rem 0.2rem rgba(231, 206, 206, 0.767);
+      }
+    }
+  }
+}
