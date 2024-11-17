@@ -1,0 +1,44 @@
+/* GLOBAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {font-size: 62.5%;}
+
+.flex {
+  display: flex;
+
+  &.wrap {
+    flex-flow: row wrap;
+  }
+
+  &.col {
+    flex-flow: column;
+
+    &.wrap {
+      flex-flow: column wrap;
+    }
+  }
+}
+
+/* carrossel */
+
+section {
+  justify-content: center;
+  padding: 6.1rem;
+}
+
+.carrossel {
+  max-width: 100rem;
+
+  & .imagens {
+    gap: 0.82rem;
+    & .imagem {
+      & img {
+        width: 100%;
+      }
+    }
+  }
+}
