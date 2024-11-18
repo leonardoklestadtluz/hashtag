@@ -23,6 +23,10 @@ html {font-size: 62.5%;}
   }
 }
 
+body {
+  background-color: #023f0cff;
+}
+
 /* carrossel */
 
 section {
@@ -35,9 +39,30 @@ section {
 
   & .imagens {
     gap: 0.82rem;
+
     & .imagem {
-      & img {
+      align-items: center;
+      border-radius: 1.5rem;
+      justify-content: center;
+      aspect-ratio: 1/1;
+      overflow: hidden;
+      positon: realative;
+      width: 32.78666rem;
+
+      &.emfoco::after {
+        background-color: transparent;
+      }
+
+      &::after {
+        content: "";
+        background-color: #023f0c5c;
+        position: absolute;
+        height: 100%;
         width: 100%;
+      }
+
+      & img {
+        height: 100%;
       }
     }
   }
