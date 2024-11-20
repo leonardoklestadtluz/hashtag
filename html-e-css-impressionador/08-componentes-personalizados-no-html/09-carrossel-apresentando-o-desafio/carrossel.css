@@ -23,10 +23,6 @@ html {font-size: 62.5%;}
   }
 }
 
-body {
-  background-color: #023f0cff;
-}
-
 /* carrossel */
 
 section {
@@ -42,23 +38,26 @@ section {
 
     & .imagem {
       align-items: center;
-      border-radius: 1.5rem;
-      justify-content: center;
       aspect-ratio: 1/1;
+      border-radius: 2rem;
+      justify-content: center;
       overflow: hidden;
-      positon: realative;
-      width: 32.78666rem;
+      position: relative;
+      width: min(calc(calc(100rem - calc(2 * 0.82rem)) / 3),
+      calc(calc(100vw - calc(2 * 0.82rem)) / 3));
 
       &.emfoco::after {
         background-color: transparent;
+        backdrop-filter: none;
       }
 
       &::after {
         content: "";
-        background-color: #023f0c5c;
         position: absolute;
         height: 100%;
         width: 100%;
+        background-color: rgba(255, 255, 255, 0.616);
+        backdrop-filter: blur(3px);
       }
 
       & img {
