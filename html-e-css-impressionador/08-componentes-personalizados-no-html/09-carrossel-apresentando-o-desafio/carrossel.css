@@ -23,6 +23,10 @@ html {font-size: 62.5%;}
   }
 }
 
+body {
+  background-image: linear-gradient(90deg, rgba(255, 238, 7, 0.637), rgba(0, 128, 0, 0.829), rgba(0, 0, 255, 0.829), rgba(198, 21, 214, 0.692));
+}
+
 /* carrossel */
 
 section {
@@ -32,9 +36,15 @@ section {
 
 .carrossel {
   max-width: 100rem;
+  position: relative;
+
+  & .container {
+    overflow: hidden;
+  }
 
   & .imagens {
     gap: 0.82rem;
+    width: max-content;
 
     & .imagem {
       align-items: center;
@@ -63,6 +73,30 @@ section {
       & img {
         height: 100%;
       }
+    }
+  }
+
+  & .botao {
+    background-color: #303030c7;
+    border-radius: 0.7rem;
+    color: bisque;
+    cursor: pointer;
+    font-size: 3rem;
+    height: 4rem;
+    width: 5rem;
+    z-index: 1;
+
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+
+    top: 50%;
+    
+    &.esquerda {transform: translate(-50%, -50%);}
+
+    &.direita {
+      right: 0;
+      transform: translate(50%, -50%);
     }
   }
 }
