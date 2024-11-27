@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid no CSS</title>
+  </head>
+  <body>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        font-size: 62.5%;
+      }
+
+      .grid {
+        width: 100rem;
+        /* height: 120rem; */
+        display: grid;
+        grid-auto-flow: column;
+        /* grid-auto-rows: 40rem 50rem; */
+        grid-template-rows: repeat(3, 1fr);
+
+        & div {
+          background-color: blue;
+          height: 30rem;
+          width: 30rem;
+        }
+
+        & .div1 {
+          background-color: red;
+        }
+
+        & .div2 {
+          background-color: blue;
+        }
+
+        & .div3 {
+          background-color: green;
+        }
+
+        & .div4 {
+          background-color: yellow;
+        }
+
+        & .div5 {
+          background-color: purple;
+        }
+        
+        & .div6 {
+          background-color: brown;
+        }
+        
+        & .div7 {
+          background-color: lime;
+        }
+
+      }
+    </style>
+
+    <div class="grid">
+      <div class="div1"></div>
+      <div class="div2"></div>
+      <div class="div3"></div>
+      <div class="div4"></div>
+      <div class="div5"></div>
+      <div class="div6"></div>
+      <div class="div7"></div>
+    </div>
+  </body>
+</html>

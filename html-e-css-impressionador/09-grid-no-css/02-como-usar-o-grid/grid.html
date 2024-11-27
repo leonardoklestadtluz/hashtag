@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid no CSS</title>
+  </head>
+  <body>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        font-size: 62.5%;
+      }
+
+      .grid {
+        width: 100rem;
+        display: grid;
+        grid-auto-flow: column;
+
+        & div {
+          background-color: blue;
+          height: 30rem;
+          width: 30rem;
+        }
+
+        & .div1 {
+          background-color: red;
+        }
+
+        & .div2 {
+          background-color: blue;
+        }
+
+        & .div3 {
+          background-color: green;
+        }
+
+        & .div4 {
+          background-color: yellow;
+        }
+
+        & .div5 {
+          background-color: purple;
+        }
+
+      }
+    </style>
+
+    <div class="grid">
+      <div class="div1"></div>
+      <div class="div2"></div>
+      <div class="div3"></div>
+      <div class="div4"></div>
+      <div class="div5"></div>
+    </div>
+  </body>
+</html>
