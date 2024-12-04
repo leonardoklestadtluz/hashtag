@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid no CSS</title>
+</head>
+<body>
+  <style>
+    body {
+      display: grid;
+      gap: 50px;
+    }
+
+    .grid {
+      display: grid;
+      place-items: center;
+      align-content: center;
+      gap: 5px;
+    }
+
+    .grid-fit {
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    .grid-fill {
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+
+    .item {
+      background-color: brown;
+      border-radius: 10px;
+      color: white;
+      font-size: 30px;
+      width: 100px;
+      height: 100px;
+      
+      display: grid;
+      place-items: center;
+
+    }
+  </style>
+  
+  <div class="grid grid-fit">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+    <div class="item">7</div>
+    <div class="item">8</div>
+    <div class="item">9</div>
+    <div class="item">10</div>
+  </div>
+
+  <div class="grid grid-fill">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+    <div class="item">7</div>
+    <div class="item">8</div>
+    <div class="item">9</div>
+    <div class="item">10</div>
+  </div>
+</body>
+</html>
