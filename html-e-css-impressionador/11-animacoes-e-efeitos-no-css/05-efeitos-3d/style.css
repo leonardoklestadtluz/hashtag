@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {font-size: 62.5%;}
+
+body {
+  background-color: rgb(197, 193, 193);
+  color: rgb(7, 5, 5);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.4;
+}
+
+/* Efeitos 3D */
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  & .bloco {
+    position: relative;
+    width: 10rem;
+    height: 10rem;
+    transform: rotateX(-34deg) rotateY(39deg);
+    transform-style: preserve-3d;
+    transition: transform 5s ease-in-out;
+    
+    &:hover {
+      transform: rotateX(-34deg) rotateY(39deg) perspective(40rem);
+    }
+  
+    & div {
+      position: absolute;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      width: 10rem;
+      height: 10rem;
+  
+      &.frente {
+        background-color: lightblue;
+        /* display: none; */
+        transform: translateZ(5rem);
+      }
+  
+      &.esquerda {
+        background-color: lightgreen;
+        transform: rotateY(-90deg) translateZ(5rem);
+      }
+  
+      &.topo {
+        background-color: lightcoral;
+        /* display: none; */
+        transform: rotateX(89deg) translateZ(50px);
+      }
+    }
+  }
+}
