@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {font-size: 62.5%;}
+
+body {
+  background-color: rgb(197, 193, 193);
+  color: rgb(7, 5, 5);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.4;
+}
+
+/* Elemento */
+body {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  padding: 5rem;
+
+  & .bloco {
+    position: relative;
+    width: 10rem;
+    height: 10rem;
+    transform: rotateX(-34deg) rotateY(39deg);
+    transform-style: preserve-3d;
+    
+    /* @keyframes duration | easing-function | delay |
+    iteration-count | direction | fill-mode | play-state | name */
+    @media (prefers-reduced-motion: no-preference) {
+      animation: 3s cubic-bezier(0.075, 0.82, 0.165, 1) 3s 5 alternate both running animacao-cubo;
+    }
+
+    &:hover {
+      animation-play-state: paused;
+    }
+
+    /* transition: transform 5s ease-in-out;
+    
+    &:hover {
+      transform: rotateX(-34deg) rotateY(39deg) perspective(40rem);
+    } */
+  
+    & div {
+      position: absolute;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      width: 10rem;
+      height: 10rem;
+  
+      &.frente {
+        background-color: lightblue;
+        /* display: none; */
+        transform: translateZ(5rem);
+      }
+  
+      &.esquerda {
+        background-color: lightgreen;
+        transform: rotateY(-90deg) translateZ(5rem);
+      }
+  
+      &.topo {
+        background-color: lightcoral;
+        /* display: none; */
+        transform: rotateX(89deg) translateZ(50px);
+      }
+    }
+  }
+}
+
+/* Keyframe */
+@keyframes animacao-cubo {
+  0% {
+    font-weight: 700;
+    transform: rotateX(-34deg) rotateY(39deg) translate(0 , 0);
+  }
+
+  25% {
+    transform: rotateX(-34deg) rotateY(39deg) translate(25rem, -15rem);
+  }
+
+  50% {
+    transform: rotateX(-34deg) rotateY(39deg) translate(50rem, 15rem);
+    
+  }
+
+  75% {
+    transform: rotateX(-34deg) rotateY(39deg) translate(75rem, 0rem);
+  }
+
+  100% {
+    transform: rotateX(-34deg) rotateY(39deg) translate(100rem, 30rem);
+  }
+}
